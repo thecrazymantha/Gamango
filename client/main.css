@@ -1,4 +1,40 @@
 body {
-  padding: 10px;
+  padding-top: 44px;
+  padding-left: 200px;
   font-family: sans-serif;
+  color: green;
+  font-size: 25px;
+  background-image: url("https://image.freepik.com/vecteurs-libre/illustration-dessin-anime-prairies_24381-270.jpg");
+  background-repeat: no-repeat;
 }
+img {
+  width : 100px;
+  height : 100px;
+}
+#Play{
+ height: 30px;
+ width: 80px;
+ color : orange;
+ font-weight: 800;
+ background-color : white;
+ border-color : green;
+ border-radius : 10px;
+}
+#Challenge{
+  height: 30px;
+  width: 80px;
+  color : orange;
+  font-weight: 800;
+  background-color : white;
+  border-color : green;
+  border-radius : 10px;
+ }
+ #Score{
+  height: 30px;
+  width: 80px;
+  color : orange;
+  font-weight: 800;
+  background-color : white;
+  border-color : green;
+  border-radius : 10px;
+ }
