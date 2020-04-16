@@ -1,19 +1,22 @@
-import assert from "assert";
+/* eslint-env mocha */
+/* global Meteor */
 
-describe("Gamango", function () {
-  it("package.json has correct name", async function () {
-    const { name } = await import("../package.json");
-    assert.strictEqual(name, "Gamango");
+import assert from 'assert';
+
+describe('Gamango', function () {
+  it('package.json has correct name', async function () {
+    const { name } = await import('../package.json');
+    assert.strictEqual(name, 'Gamango');
   });
 
   if (Meteor.isClient) {
-    it("client is not server", function () {
+    it('client is not server', function () {
       assert.strictEqual(Meteor.isServer, false);
     });
   }
 
   if (Meteor.isServer) {
-    it("server is not client", function () {
+    it('server is not client', function () {
       assert.strictEqual(Meteor.isClient, false);
     });
   }
