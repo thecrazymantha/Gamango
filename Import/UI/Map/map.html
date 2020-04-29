@@ -1,0 +1,99 @@
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ 
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+   <title>projet_bootstrap</title>
+ </head>
+ 
+ <body>
+   {{> score}}
+   <!--{{> map}}-->
+   {{> canvas}}
+ 
+ 
+ </body>
+ 
+ 
+ <template name="score">
+ 
+   <div class="row">
+ 
+     <div class="col-md bg-info text-center font-weight-bold py-2">
+ 
+       <div class="row">
+         <div  class="col-md bg-info text-center font-weight-bold">
+           <div class="row">
+             <!--<span class="col-md"><img src="https://cdn.pixabay.com/photo/2013/07/13/09/47/laurel-wreath-156019_960_720.png"></span>-->
+             <span class="col-md"><img src="https://cdn.pixabay.com/photo/2014/04/02/11/12/trophy-305554_960_720.png"></span>
+             <p class="col-md">3000 pts</p>
+           </div>
+         </div>
+       </div>
+ 
+     </div>
+ 
+ 
+     <div class="col-md bg-info text-center font-weight-bold py-2">
+       <p>9 minutes et 40 secondes aujourd'hui</p>
+     </div>
+ 
+ 
+     <div class="col-md bg-info text-center font-weight-bold py-2">
+ 
+       <p>Recommandations de l'OMS</p>
+       <div class="progress">
+         <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+       </div>
+ 
+     </div>
+ 
+   
+   </div>
+ 
+ </template>
+ 
+ 
+ <template name="canvas">
+ 
+ 
+   <div class="row">
+     <div class="col-12 text-center">
+       <svg id="target" width="1000" height="1000">
+ 
+         <line x1="475" y1="210" x2="475" y2="120" style="stroke: #969e91;stroke-width:2; stroke-dasharray: 10 5"/>  
+         
+         <circle class="bouton1" cx="475" cy="250" r="20" stroke="black" stroke-width="1" fill="#affa52" />
+         
+         <circle class="bouton2" cx="725" cy="350" r="25" stroke="black" stroke-width="1" fill="#affa52" />
+        
+         <circle class="bouton3" cx="525" cy="400" r="20" stroke="black" stroke-width="1" fill="#affa52" />
+         
+         <circle class="bouton4" cx="675" cy="500" r="20" stroke="black" stroke-width="1" fill="#affa52" />
+         
+         <circle class="bouton5" cx="545" cy="600" r="20" stroke="black" stroke-width="1" fill="#f5a614" />
+         
+           
+           
+           
+         
+ 
+         <line x1="489.142135624" y1="264.142135624" x2="707.32233047" y2="332.32233047" style="stroke:rgb(255,0,0);stroke-width:2" />
+         <line x1="707.32233047" y1="367.67766953" x2="539.142135624" y2="385.857864376" style="stroke:rgb(255,0,0);stroke-width:2" />
+      
+ 
+         <line x1="539.142135624" y1="414.142135624" x2="660.857864376" y2="485.857864376" style="stroke:rgb(255,0,0);stroke-width:2" />
+         <line x1="660.857864376" y1="514.142135624" x2="559.142135624" y2="585.857864376" style="stroke:rgb(255,0,0);stroke-width:2" />
+ 
+ 
+         <line x1="545" y1="640" x2="545" y2="730" style="stroke: #969e91;stroke-width:2; stroke-dasharray: 10 5" />
+ 
+       </svg>
+       
+     </div>
+   </div>
+ 
+ 
+ </template>
