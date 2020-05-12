@@ -1,23 +1,49 @@
+
+html{
+  height: 100%;
+}
+
 body {
-    padding: 10px;
-    font-family: sans-serif;
-    background-color: lightgrey;
-  }
+  background-image: linear-gradient(rgb(0, 238, 255), rgb(0, 68, 255));
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+img{
+  width : 60px;
+  height : 60px;
+}
+
+
+
+
+
+
+.bouton {
+  stroke-dasharray: 15;
+  stroke-width: 2;
+  stroke-dashoffset: 15;
+  animation: dash 5s infinite linear ;
+}
+@keyframes dash {
+from {
+  stroke-dashoffset: 0;
+}
+to {
+  stroke-dashoffset: 150;
   
-  img{
-    width : 60px;
-    height : 60px;
-  }
-  
-  .btn-circle.btn-xl { 
-    width: 70px; 
-    height: 70px; 
-    padding: 10px 16px; 
-    border-radius: 35px; 
-    font-size: 12px; 
-    text-align: center; 
-  }
-  
-  #target .bouton1:hover, .bouton2:hover, .bouton3:hover, .bouton4:hover, .bouton5:hover{
-    stroke: #c2f584;
-  }
+}
+}
+
+#degradeA{
+  background-image: linear-gradient(rgb(0, 238, 255), rgb(255, 193, 7));
+  height: 40px;
+}
+
+#degradeB{
+  background-image: linear-gradient(rgb(255, 193, 7), rgb(0, 238, 255));
+  height: 40px;
+}
