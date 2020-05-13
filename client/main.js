@@ -5,20 +5,14 @@ import './main.html';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-Template.hello.onCreated(function helloOnCreated() {
-  // counter starts at 0
-  this.counter = new ReactiveVar(0);
-});
+// Importer tous les html du dossier import et importer le routing du dossier lib
 
-Template.hello.helpers({
-  counter() {
-    return Template.instance().counter.get();
-  },
-});
+import '../lib/routing.js';
 
-Template.hello.events({
-  'click button'(event, templateInstance) {
-    // increment the counter when button is clicked
-    templateInstance.counter.set(templateInstance.counter.get() + 1);
-  },
-});
+import '../Import/UI/Classement/classement.html';
+import '../Import/UI/Home/home.html';
+import '../Import/UI/Login/login.html';
+import '../Import/UI/Map/map.html';
+import '../Import/UI/Menu/menu.html';
+import '../Import/UI/Medailles/medailles.html';
+

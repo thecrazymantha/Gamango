@@ -1,0 +1,23 @@
+body {
+    padding: 10px;
+    font-family: sans-serif;
+    background-color: lightgrey;
+  }
+  
+  img{
+    width : 60px;
+    height : 60px;
+  }
+  
+  .btn-circle.btn-xl { 
+    width: 70px; 
+    height: 70px; 
+    padding: 10px 16px; 
+    border-radius: 35px; 
+    font-size: 12px; 
+    text-align: center; 
+  }
+  
+  #target .bouton1:hover, .bouton2:hover, .bouton3:hover, .bouton4:hover, .bouton5:hover{
+    stroke: #c2f584;
+  }
