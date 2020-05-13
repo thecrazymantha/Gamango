@@ -7,9 +7,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import '../lib/routing.js';
 
-import '../Import/UI/Classement/classement.html';
-import '../Import/UI/Home/home.html';
-import '../Import/UI/Login/login.html';
+import '../Import/UI/Classement/classement.js';
+import '../Import/UI/Home/home.js';
+import '../Import/UI/Login/login.js';
 import '../Import/UI/Map/map.js';
-import '../Import/UI/Menu/menu.html';
-import '../Import/UI/Medailles/medailles.html';
+import '../Import/UI/Menu/menu.js';
+import '../Import/UI/Medailles/medailles.js';
