@@ -2,7 +2,6 @@ import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
 import './map.html';
-import './map.css';
 
 Template.canvas.events({
   'click .bouton'(event) {

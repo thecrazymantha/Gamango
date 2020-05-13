@@ -10,7 +10,6 @@ import '../lib/routing.js';
 import '../Import/UI/Classement/classement.html';
 import '../Import/UI/Home/home.html';
 import '../Import/UI/Login/login.html';
-import '../Import/UI/Map/map.html';
+import '../Import/UI/Map/map.js';
 import '../Import/UI/Menu/menu.html';
 import '../Import/UI/Medailles/medailles.html';
-
