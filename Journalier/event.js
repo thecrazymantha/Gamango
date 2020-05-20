@@ -1,3 +1,4 @@
+/*
 let n = new Date();
   let jour = n.getDate();
     if (jour < 10){
@@ -25,3 +26,4 @@ let x = setInterval(function() {
     document.getElementById("bouton").disabled = true; 
   }
 }, 1000);
+*/

@@ -1,3 +1,4 @@
+/*
 let end = 0
 let start = 0
 let diff = 0
@@ -62,3 +63,4 @@ function chronoStop(){
 	document.chronoForm.reset.onclick = chronoStopReset
 	clearTimeout(resetid)
 }
+*/
