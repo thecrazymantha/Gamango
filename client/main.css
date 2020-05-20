@@ -1,4 +1,75 @@
 
+
+html{
+  height: 100%;
+}
+
+body {
+  background-image: linear-gradient(rgb(0, 238, 255), rgb(0, 68, 255));
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+
+img{
+  width : 60px;
+  height : 60px;
+}
+
+
+
+.bouton {
+  stroke-dasharray: 15;
+  stroke-width: 2;
+  stroke-dashoffset: 15;
+  animation: dash 5s infinite linear ;
+}
+@keyframes dash {
+from {
+  stroke-dashoffset: 0;
+}
+to {
+  stroke-dashoffset: 150;
+  
+}
+}
+
+#degradeA{
+  background-image: linear-gradient(rgb(0, 238, 255), rgb(255, 193, 7));
+  height: 40px;
+}
+
+#degradeB{
+  background-image: linear-gradient(rgb(255, 193, 7), rgb(0, 238, 255));
+  height: 40px;
+}
+
+
+#instructions{
+  opacity: 0;
+}
+
+#center{
+  height: 50vh;
+}
+
+#half_center{
+  height: 50vh;
+}
+#btn1, #btn2{
+  width: 156.17px;
+}
+
+
+
+
+
+
+
+
+
 /*
 body {
 

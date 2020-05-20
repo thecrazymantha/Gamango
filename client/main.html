@@ -1,36 +1,146 @@
-
-
-
 <head>
-  <title>Gamango</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <title>projet_bootstrap</title>
 </head>
 
-<body>
 
-  
+<body>
+ 
 </body>
 
 
+<template name="score">
 
-<!--
-  <head>
-  <title>Gamango</title>
+ <div class="container-fluid">
 
-</head>
-
-<body>
-  <h1>Gamang<img src="https://cdn.pixabay.com/photo/2020/04/02/19/19/mango-4996445_960_720.png"></h1>
-<a href="home.html">La page home</a>
-  {{> hello}}
-</body>
-
-<template name="hello">
-  <div class="boutons">
-    <button id="Challenge">Challenge</button>
-    <button id="Play">Jouer</button>
-    <button id="Score">Score</button>
-  </div>
+   <div id="degradeA" class="row bg-lg">
+     <div class="col">
+       <p> </p>
+       
+     </div>
+   </div>
+       
+ 
+   <div class="row">
+     <div class="col-lg-3 bg-warning">
+       <img src="https://cdn.pixabay.com/photo/2014/04/02/11/12/trophy-305554_960_720.png">
+     </div>
+       <div class="col-3 bg-warning py-auto">
+         <b id="Total">Score : {{total}}</b>
+       </div>
+       <div class="col-3 bg-warning">
+         <b id="total_temps">Allez-y essayez ! ;)</b>
+       </div>
+     <div class="col-3 bg-warning">
+       <b>LevelUP</b>
+       <div class="progress">
+       <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+     </div>
+     </div>
+   </div>
+ 
   
+ </div>
+ <div class="container-fluid">
+   {{> Template.dynamic template=main}}
+ </div>
+ 
+
 </template>
--->
 
+
+<template name="canvas" id="map">
+
+ <div class="row justify-content-end">
+   <div class="col-lg-4" id="div_for_svg">
+     <svg id="svg1" width=500 height=715 >
+       <g transform = "translate(-352, -17)">
+         <line class="lignes" x1="475" y1="210" x2="475" y2="120" style="stroke: #969e91;stroke-width:2; stroke-dasharray: 10 5"/>  
+
+
+ 
+         <circle id="btn1" class="bouton" cx="475" cy="250" r="20" stroke="red" stroke-width="1" fill="#affa52" />
+         
+           <text id="text1" x="380" y="250" class="large" font-weight="bold">{{exercice}}</text>
+         
+        
+         <circle id="btn2" class="bouton" cx="725" cy="350" r="25" stroke="red" stroke-width="1" fill="#affa52" />
+         
+           <text id="text2" x="760" y="350" class="large" font-weight="bold">{{exercice}}</text>
+         
+
+         <circle id="btn3" class="bouton" cx="525" cy="400" r="20" stroke="red" stroke-width="1" fill="#affa52" />
+         
+           <text id="text3" x="430" y="400" class="large" font-weight="bold">{{exercice}}</text>
+         
+
+         <circle id="btn4" class="bouton" cx="675" cy="500" r="20" stroke="red" stroke-width="1" fill="#affa52" />
+        
+           <text id="text4" x="720" y="500" class="large" font-weight="bold">{{exercice}}</text>
+        
+         
+         <circle id="btn5" class="bouton" cx="545" cy="600" r="20" stroke="black" stroke-width="1" fill="#f5a614" />
+       
+           <text id="text5" x="450" y="600" class="large" font-weight="bold">{{exercice}}</text>
+        
+           
+           
+
+         <line class="lignes" x1="489.142135624" y1="264.142135624" x2="707.32233047" y2="332.32233047" style="stroke:rgb(255,0,0);stroke-width:2" />
+         <line class="lignes" x1="707.32233047" y1="367.67766953" x2="539.142135624" y2="385.857864376" style="stroke:rgb(255,0,0);stroke-width:2" />
+     
+
+         <line class="lignes" x1="539.142135624" y1="414.142135624" x2="660.857864376" y2="485.857864376" style="stroke:rgb(255,0,0);stroke-width:2" />
+         <line class="lignes" x1="660.857864376" y1="514.142135624" x2="559.142135624" y2="585.857864376" style="stroke:rgb(255,0,0);stroke-width:2" />
+
+
+         <line class="lignes" x1="545" y1="640" x2="545" y2="730" style="stroke: #969e91;stroke-width:2; stroke-dasharray: 10 5" />
+
+       </g>
+     </svg>
+   </div>
+   <div class="col-lg-4 text-center my-auto" id="instructions">
+     <h1>Have an awesome day ! </h1>
+     <br>
+     
+     <p id="display_choix"></p>
+     
+
+     <br>
+   
+     <button class="bg-warning btn-lg" id="btn_fini">J'ai fini !</button>
+     
+     <br>
+     <br>
+     <br>
+     <br>
+     
+     <p><i>Random fact that you didn't know about </i></p>
+   </div>
+ </div>
+
+ 
+
+ 
+</template>
+
+
+<template name="Home">
+ <div class="row align-items-center" id="half_center">
+   <div class="col-lg text-center align-self-center" id="welcome">
+     <h1>Welcome to GAMANGO</h1>
+   </div>
+ </div>
+ <div class="row" id="center">
+   <div class="col-lg text-center" id="home">
+     <div class="btn-group-vertical"></div>
+       <button type="button" class="btn-lg btn-success" id="btn1">CLASSEMENT</button>
+       <button type="button" class="btn-lg btn-success" id="btn2">JOUER</button>
+     </div>
+ </div>
+</template>
