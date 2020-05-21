@@ -6,6 +6,10 @@ import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { Mongo } from 'meteor/mongo';
 
 // Import des fichiers html (pour les templates) et pour le fichier CSS
+import '../lib/routing.js';
+import '../Import/api/Login/login.html';
+import '../Import/api/Login/login.js';
+
 import './main.html';
 import './main.css';
 
