@@ -1,5 +1,14 @@
+<head>
+</head>
+<body>
+  {{> bertAlert}}
+</body>
+
+
 <template name="login">
+  {{#if currentUser}}
   <h3 class="black">You are logged in. Return <a href="./">home</a>.</h3>
+  {{else}}
   <form class="form-signin">
     <h2 class="form-signin-heading">Account loggin</h2>
     <label for="email" class="sr-only">Email Adress</label>
@@ -9,10 +18,13 @@
     <button type="submit" id="login-btn" class="btn btn-lg btn-success btn-block">Log In</button>
     <p>No Account?<a href="./NEW-ACCOUNT"> Create account</a></p>
   </form>
+  {{/if}}
 </template>
    
 <template name="signup">
+  {{#if currentUser}}
   <h3 class="black">You are logged in. Return <a href="./">home</a>.</h3>
+  {{else}}
   <form class="form-signup" id="register-form">
     <h2 class="form-signin-heading">Create Account</h2>
     <label for="username" class="sr-only">User Name</label>
@@ -26,4 +38,5 @@
     <button type="submit" id="create_acc" class="btn btn-lg btn-success btn-block">Log In</button>
     <p>Already have an account ?<a href="./login"> Sign-in !</a></p>
   </form>
+  {{/if}}
 </template>

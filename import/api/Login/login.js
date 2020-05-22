@@ -16,6 +16,8 @@ Template.login.events({
 });
 */
 
+//PART v.2
+/*
 Tracker.autorun(function(){
 	if(Meteor.userId()){
 		Router.go("/PLAY");
@@ -58,15 +60,37 @@ Template.login.events({
 Template.signup.rendered = function(){
   
 };
-
+*/
 Template.signup.events({
   "submit .form-signup": function(event){
-   let username = event.target.username.value;
-   let email = event.target.email.value;
-   let password = event.target.password.value;
-   let password2 = event.target.password2.value;
+   let username = trimInput(event.target.username.value);
+   let email = trimInput(event.target.email.value);
+   let password = trimInput(event.target.password.value);
+   let password2 = trimInput(event.target.password2.value);
+
+   if(isNotEmpty(email) && isNotEmpty(username) && isNotEmpty(password) && isEmail(email) && areValidPasswords(password, password2)) {
+	   Accounts.createUser({
+		   username: username,
+		   email: email,
+		   password: password,
+		   profile: {
+
+		   }
+	   }, function(err){
+		   if(err){
+			   Bert.alert(err.reason, "danger", "growl-top-right");
+		   } else {
+			   Bert.alert("Account Created ! You are now logged in", "success", "growl-top-right");
+			   Router.go("/PLAY");
+		   }
+	   });
+   }
+   return false;
   }
 });
+
+
+
 //Règles de validation pour le formulaire
 
 // Trim Helper
@@ -100,3 +124,15 @@ isValidPassword = function(password){
 	}
 	return true;
 };
+
+// Match password 
+areValidPasswords = function(password, confirm) {
+	if(!isValidPassword(password)) {
+		return false;
+	}
+	if(password !== confirm) {
+		Bert.alert("Passwords do not match", "danger", "growl-top-right");
+		return false;
+	}
+	return true;
+}
