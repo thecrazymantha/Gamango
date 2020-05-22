@@ -39,7 +39,7 @@ Template.login.events({
 					Bert.alert(err.reason, "danger", "growl-top-right");
 					return false;
 				} else {
-					Router.go("/jokes");
+					Router.go("/PLAY");
 					Bert.alert("You are now logged in", "success", "growl-top-right");
 				}
 			});
