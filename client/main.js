@@ -10,6 +10,9 @@ import '../lib/routing.js';
 import '../import/api/login/login.html';
 import '../import/api/login/login.js';
 
+import '../import/api/signup/signup.html';
+import '../import/api/signup/signup.js';
+
 import './main.html';
 import './main.css';
 
@@ -77,13 +80,22 @@ FlowRouter.route('/PLAY', {
   }
 });
 
-// Route pour amener depuis l'écran d'accueil (en cliquant sur le bouton Login) jusqu'à la pag de login
-FlowRouter.route('/NEW-ACCOUNT', {
-  name: 'New-account',
+// Route pour amener depuis l'écran d'accueil (en cliquant sur le bouton Se Connecter) jusqu'à la pag de login
+FlowRouter.route('/login', {
+  name: 'login',
+  action() {
+    BlazeLayout.render('login');
+  }
+});
+
+// Route pour amener depuis l'écran d'accueil (en cliquant sur le bouton Créer un compte) jusqu'à la pag de signup
+FlowRouter.route('/signup', {
+  name: 'signup',
   action() {
     BlazeLayout.render('signup');
   }
 });
+
 
 
 // Définit les events qui se déroulent sur le template Home
@@ -164,11 +176,16 @@ Template.Home.events({
   },
 
 'click #btn3' : function(){
-  FlowRouter.go('New-account');
-  }
+  FlowRouter.go('login');
+  },
+
+'click #btn4' : function(){
+  FlowRouter.go('signup');
+  },
+
+
 
 })
-
 
 
 // on Rendered permet de définir des variables et plus avant que la page soit chargée
