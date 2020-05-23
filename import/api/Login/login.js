@@ -1,6 +1,7 @@
 // import du CSS et du HTML
 import './login.html';
 import './login.css';
+
 //import { Accounts } from 'meteor/accounts-base';
 // Les events page login
 /*
@@ -17,12 +18,13 @@ Template.login.events({
 */
 
 //PART v.2
-
+/*
 Tracker.autorun(function(){
 	if(Meteor.userId()){
-		Router.go("/PLAY");
+		console.log(Meteor.userId);
 	}
 });
+*/
 
 Template.login.events({
 	"submit .form-signin": function(event){
@@ -39,7 +41,7 @@ Template.login.events({
 					Bert.alert(err.reason, "danger", "growl-top-right");
 					return false;
 				} else {
-					Router.go("/PLAY");
+					FlowRouter.go('play');
 					Bert.alert("You are now logged in", "success", "growl-top-right");
 				}
 			});

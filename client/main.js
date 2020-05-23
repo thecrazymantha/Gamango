@@ -62,6 +62,7 @@ const temps_tracker = new Tracker.Dependency();
 
 if (Meteor.isClient){
   
+
 // Défini les routes pour l'application les packages kadira:flow-router et kadira:blaze-layout
 
 // Route pour l'écran d'accueil. (avec les deux boutons : Classement et Play)
@@ -102,7 +103,7 @@ FlowRouter.route('/signup', {
 
 Template.Home.events({
   'click #btn2' : function(){
-
+    console.log(Meteor.userId());
     //  Lorsqu'on clique sur le bouton 'PLAY' à l'accueil il faut que l'utilisateur soit redirigé vers le jeu, c-à-d la carte avec les exercices à /PLAY.
     FlowRouter.go('play');
 
@@ -170,6 +171,9 @@ Template.Home.events({
       console.log(identification);
       console.log(row);
 
+      // On veut également savoir qui a créé cet exercice
+
+      row.owner = Meteor.user()._id;
       // Ajouter cet l'exercice choisi au hasard avec les nouvelles propritétés dans la BDD Level_1
       Level_1.insert(row);
     }
@@ -243,7 +247,7 @@ Template.canvas.events({
       
       
     //  On cherche le dernier exercice généré pour le bouton cliqué (active_button est une variable globale)
-    let exercice_on_button = Level_1.find({'on_button': active_button},{limit: 1, sort: {date_création:-1}}).fetch();
+    let exercice_on_button = Level_1.find({'on_button': active_button, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
     console.log(exercice_on_button);
     console.log(exercice_on_button[0].exercice);
 
