@@ -7,8 +7,11 @@ import { Mongo } from 'meteor/mongo';
 
 // Import des fichiers html (pour les templates) et pour le fichier CSS
 import '../lib/routing.js';
-import '../import/api/Login/login.html';
+import '../import/api/login/login.html';
+import '../import/api/login/login.js';
 
+import '../import/api/signup/signup.html';
+import '../import/api/signup/signup.js';
 
 import './main.html';
 import './main.css';
@@ -77,6 +80,22 @@ FlowRouter.route('/PLAY', {
   }
 });
 
+// Route pour amener depuis l'écran d'accueil (en cliquant sur le bouton Se Connecter) jusqu'à la pag de login
+FlowRouter.route('/login', {
+  name: 'login',
+  action() {
+    BlazeLayout.render('login');
+  }
+});
+
+// Route pour amener depuis l'écran d'accueil (en cliquant sur le bouton Créer un compte) jusqu'à la pag de signup
+FlowRouter.route('/signup', {
+  name: 'signup',
+  action() {
+    BlazeLayout.render('signup');
+  }
+});
+
 
 
 // Définit les events qui se déroulent sur le template Home
@@ -86,6 +105,8 @@ Template.Home.events({
 
     //  Lorsqu'on clique sur le bouton 'PLAY' à l'accueil il faut que l'utilisateur soit redirigé vers le jeu, c-à-d la carte avec les exercices à /PLAY.
     FlowRouter.go('play');
+
+
 
     //  Faire une boucle pour tirer au hasard un exercice pour chaque bouton sur la map.
     for(i=0; i<=4; i++){
@@ -152,9 +173,19 @@ Template.Home.events({
       // Ajouter cet l'exercice choisi au hasard avec les nouvelles propritétés dans la BDD Level_1
       Level_1.insert(row);
     }
-  }
-})
+  },
 
+'click #btn3' : function(){
+  FlowRouter.go('login');
+  },
+
+'click #btn4' : function(){
+  FlowRouter.go('signup');
+  },
+
+
+
+})
 
 
 // on Rendered permet de définir des variables et plus avant que la page soit chargée

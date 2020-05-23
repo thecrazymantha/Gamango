@@ -1,57 +1,46 @@
-// import du CSS et du HTML
-import './login.html';
-import './login.css';
-//import { Accounts } from 'meteor/accounts-base';
-// Les events page login
-/*
-// eslint-disable-next-line no-undef
-Template.login.events({
-  'click #createAcc'(event) {
-    event.preventDefault();
-    let username = document.getElementById('username').value;
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    let password2 = document.getElementById('password2').value;
-  },
-});
-*/
+import './signup.html';
+import './signup.css';
 
-//PART v.2
+Template.signup.rendered = function() {
 
-Tracker.autorun(function(){
-	if(Meteor.userId()){
-		Router.go("/PLAY");
-	}
-});
+}
 
-Template.login.events({
-	"submit .form-signin": function(event){
+Template.signup.events({
+	"submit .form-signup": function(event){
+		var username = trimInput(event.target.username.value);
 		var email = trimInput(event.target.email.value);
 		var password = trimInput(event.target.password.value);
+		var password2 = trimInput(event.target.password2.value);
 
 		if(isNotEmpty(email) &&
+			isNotEmpty(username) &&
 			isNotEmpty(password) &&
 			isEmail(email) &&
-			isValidPassword(password)){
+			areValidPasswords(password, password2)) {
 
-			Meteor.loginWithPassword(email, password, function(err){
-				if(err) {
+			Accounts.createUser({
+				username: username,
+				email: email,
+				password: password,
+				profile: {
+					//Here put score of the players
+				}
+			}, function(err){
+				if(err){
 					Bert.alert(err.reason, "danger", "growl-top-right");
-					return false;
 				} else {
+					Bert.alert("Account Created! You Are Now Logged In", "success", "growl-top-right");
 					Router.go("/PLAY");
-					Bert.alert("You are now logged in", "success", "growl-top-right");
+
 				}
 			});
-
+			
 		}
 
-		return false // Prevent Submit
+		return false;
+
 	}
-
 });
-
-
 
 //Règles de validation pour le formulaire
 
