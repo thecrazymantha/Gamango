@@ -211,12 +211,27 @@ Template.canvas.onRendered(function() {
 
 Template.score.helpers({
 
-  'total' : function(){
+  'total_score' : function(){
 
     // Aller chercher le score de l'utlisateur.
     
     return Meteor.user().profile.score;
-  }
+    
+  },
+
+  'total_temps' : function(){
+
+    // Aller chercher le temps de l'utilisateur de l'utlisateur.
+
+    if (Meteor.user().profile.temps == 0){
+      return "Allez-y essayez !!"
+    } else {
+      return Meteor.user().profile.temps;
+    }
+    
+  },
+
+
 
 });
 
@@ -355,7 +370,7 @@ Template.canvas.events({
   // On va maintenant chercher le dernier exercice complété par l'utilisateur et ajouter à la variable globale 'score_temps' le temps mis pour compléter cet exercice
 
   // 1. Chercher le html, où on mettra le total du temps, par id.
-  let total_temps = document.getElementById('total_temps');
+  //let total_temps = document.getElementById('total_temps');
 
   // 2. Trier BDD pour trouver le dernier exercice qui contient le fields : "completed_in"
   // demander comment trier parmi les 5 derniers documents dans les fichiers.
@@ -371,7 +386,7 @@ Template.canvas.events({
 
   // L'afficher dans l'html
 
-  total_temps.innerHTML = temps_actuel + " s";
+  //total_temps.innerHTML = temps_actuel + " s";
   
   // Lorsqu'un exercice est fini on veut changer l'apparence du bouton pour cet exercice
   document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#3103fc');
