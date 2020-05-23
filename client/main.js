@@ -35,7 +35,7 @@ import { Level_1 } from '../import/api/level_1.js';
 
 // Entrer ceci dans Base :
 /*
-Aller dans le terminal : ctrl+¨¨, puis taper : meteor mongo. Entrer les lignes de codes suivantes les unes après les autres.
+Aller dans le terminal : ctrl+¨, puis taper : meteor mongo. Entrer les lignes de codes suivantes les unes après les autres.
 
 db.base.insert({exercice : "pompes", nombre : 20, points : 50 });
 db.base.insert({exercice : "tractions", nombre : 15, points : 100 });
@@ -48,15 +48,10 @@ db.base.insert({exercice : "abdos", nombre : 20, points : 50 });
 //  Variables globales
 let tl = new TimelineMax({paused:true});
 let tl2 = new TimelineMax({paused:true});
-let score = 0;
-let active_button = "";
-let score_temps = 0;
 
 
-// Ces trackers permettent de changer certaines choses même après que la page ait été chargée. 
-const score_tracker = new Tracker.Dependency();
-const active_tracker = new Tracker.Dependency();
-const temps_tracker = new Tracker.Dependency();
+
+// Ces trackers permettent de changer certaines choses même après que la page ait été chargée. --> remplacé par des fields dans le profil de l'utilisateur
 
 
 
@@ -103,7 +98,12 @@ FlowRouter.route('/signup', {
 
 Template.Home.events({
   'click #btn2' : function(){
+    /*
+    console.log(Meteor.user().profile);
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.score": 20}}); 
+    console.log(Meteor.user().profile.score);
     console.log(Meteor.userId());
+    */
     //  Lorsqu'on clique sur le bouton 'PLAY' à l'accueil il faut que l'utilisateur soit redirigé vers le jeu, c-à-d la carte avec les exercices à /PLAY.
     FlowRouter.go('play');
 
@@ -174,6 +174,7 @@ Template.Home.events({
       // On veut également savoir qui a créé cet exercice
 
       row.owner = Meteor.user()._id;
+
       // Ajouter cet l'exercice choisi au hasard avec les nouvelles propritétés dans la BDD Level_1
       Level_1.insert(row);
     }
@@ -210,11 +211,27 @@ Template.canvas.onRendered(function() {
 
 Template.score.helpers({
 
-  'total' : function(){
-    score_tracker.depend();
-    console.log(score);
-    return score;
-  }
+  'total_score' : function(){
+
+    // Aller chercher le score de l'utlisateur.
+    
+    return Meteor.user().profile.score;
+    
+  },
+
+  'total_temps' : function(){
+
+    // Aller chercher le temps de l'utilisateur de l'utlisateur.
+
+    if (Meteor.user().profile.temps == 0){
+      return "Allez-y essayez !!"
+    } else {
+      return Meteor.user().profile.temps;
+    }
+    
+  },
+
+
 
 });
 
@@ -237,17 +254,16 @@ Template.canvas.events({
 
     //  On regarde quel bouton a été cliqué
     let button_choice = target.id;
-    active_button = button_choice;
-    console.log(active_button);
-    active_tracker.changed();
-      
+
+    Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.active_button": button_choice}});
+
 
     //  On va chercher l'html où les instructions sur l'exercice à faire seront données
     let display_choix = document.getElementById('display_choix');
       
       
     //  On cherche le dernier exercice généré pour le bouton cliqué (active_button est une variable globale)
-    let exercice_on_button = Level_1.find({'on_button': active_button, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
+    let exercice_on_button = Level_1.find({'on_button': Meteor.user().profile.active_button, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
     console.log(exercice_on_button);
     console.log(exercice_on_button[0].exercice);
 
@@ -306,7 +322,7 @@ Template.canvas.events({
   'click #btn_fini': function(){
     
   //  Lorsque le bouton est cliqué on veut que la map et les instructions reprennent leur position initiale. 
-  //  Ceci est fait en faisant l'inverse de l'animation faites en cliquant sur la map
+  //  Ceci est fait en faisant l'inverse de l'animation faites en cliquant sur la map.
   if(tl.progress() === 1) {
     tl.reverse();
   }
@@ -317,15 +333,17 @@ Template.canvas.events({
 
 
   // On va chercher les derniers exercices qui ont été générés pour ce bouton
-  let exercice_on_button = Level_1.find({'on_button': active_button},{limit: 1, sort: {date_création:-1}}).fetch();
+  let exercice_on_button = Level_1.find({'on_button': Meteor.user().profile.active_button, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
 
   // On cherche ensuite le nombre de points qui est attribué lorsque cet exercice est effectué
   let tab_choix = exercice_on_button[0];
   points_gained = tab_choix.points;
 
-  // On définit score qui est une variable globale
-  score= score+points_gained;
-  score_tracker.changed();
+
+  // Modifier le score du user actif
+  let score_actuel = Meteor.user().profile.score + points_gained
+  console.log(score_actuel);
+  Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.score": score_actuel}});
 
 
 
@@ -345,34 +363,35 @@ Template.canvas.events({
   console.log(completed_in);
 
   // On intègre ces modifications à la base de donnée en utilisant l'id de l'exercice généré pour ce bouton
-  Level_1.update({"_id": choix_id}, {$set: {"finished_at": d3_ms, "completed_in": completed_in}});
+  Level_1.update({"_id": choix_id }, {$set: {"finished_at": d3_ms, "completed_in": completed_in}});
 
 
 
   // On va maintenant chercher le dernier exercice complété par l'utilisateur et ajouter à la variable globale 'score_temps' le temps mis pour compléter cet exercice
 
   // 1. Chercher le html, où on mettra le total du temps, par id.
-  let total_temps = document.getElementById('total_temps');
+  //let total_temps = document.getElementById('total_temps');
 
   // 2. Trier BDD pour trouver le dernier exercice qui contient le fields : "completed_in"
   // demander comment trier parmi les 5 derniers documents dans les fichiers.
-  let exercices_faits = Level_1.find({'completed_in': { $exists: true}},{limit: 1, sort: {date_création:-1}}).fetch();
+  let exercices_faits = Level_1.find({'completed_in': { $exists: true}, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
   console.log(exercices_faits);
 
-  // Chercher la valeur de completed_in et l'additioner à la variable globale score_temps avec l'aide du tracker
+  // Chercher la valeur de completed_in et l'additioner à la valeur du champs temps de l'utilisateur actif
   console.log(exercices_faits[0].completed_in);
-  score_temps = score_temps + exercices_faits[0].completed_in;
-  temps_tracker.changed();
-  total_temps.innerHTML = score_temps + " s";
+  
+  let temps_actuel = Meteor.user().profile.temps + exercices_faits[0].completed_in;
+  console.log(temps_actuel);
+  Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.temps": temps_actuel}});
+
+  // L'afficher dans l'html
+
+  //total_temps.innerHTML = temps_actuel + " s";
   
   // Lorsqu'un exercice est fini on veut changer l'apparence du bouton pour cet exercice
-  document.getElementById(active_button).setAttribute('fill', '#3103fc');
-  document.getElementById(active_button).setAttribute('stroke', '#84ff00');
-  
-  
+  document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#3103fc');
+  document.getElementById(Meteor.user().profile.active_button).setAttribute('stroke', '#84ff00');
 }
-
-
 });
   
 }

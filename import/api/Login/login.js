@@ -41,7 +41,7 @@ Template.login.events({
 					Bert.alert(err.reason, "danger", "growl-top-right");
 					return false;
 				} else {
-					FlowRouter.go('play');
+					FlowRouter.go('home');
 					Bert.alert("You are now logged in", "success", "growl-top-right");
 				}
 			});
