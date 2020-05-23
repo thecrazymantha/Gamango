@@ -8,7 +8,7 @@ import { Mongo } from 'meteor/mongo';
 // Import des fichiers html (pour les templates) et pour le fichier CSS
 import '../lib/routing.js';
 import '../import/api/Login/login.html';
-import '../import/api/Login/login.js';
+
 
 import './main.html';
 import './main.css';
