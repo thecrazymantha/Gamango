@@ -23,14 +23,17 @@ Template.signup.events({
 				email: email,
 				password: password,
 				profile: {
-					//Here put score of the players
+					score : 0,
+					temps : 0,
+					active_button: ""
 				}
+				
 			}, function(err){
 				if(err){
 					Bert.alert(err.reason, "danger", "growl-top-right");
 				} else {
 					Bert.alert("Account Created! You Are Now Logged In", "success", "growl-top-right");
-					FlowRouter.go('play');
+					FlowRouter.go('home');
 
 				}
 			});
