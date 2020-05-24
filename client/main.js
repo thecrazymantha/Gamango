@@ -398,12 +398,15 @@ Template.canvas.events({
 
   // 2. Trier BDD pour trouver le dernier exercice qui contient le fields : "completed_in"
   // demander comment trier parmi les 5 derniers documents dans les fichiers.
-  let exercices_faits = Level_1.find({'completed_in': { $exists: true}, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
+  let exercices_faits = Level_1.find({'completed_in': { $exists: true}, 'owner': Meteor.user()._id, 'on_button': Meteor.user().profile.active_button}, {limit: 1, sort: {date_création:-1}}).fetch();
+  console.log(Meteor.user().profile.active_button);
   console.log(exercices_faits);
   console.log(Meteor.user().profile.active_button);
 
   // Chercher la valeur de completed_in et l'additioner à la valeur du champs temps de l'utilisateur actif
   console.log(exercices_faits[0].completed_in);
+  console.log(exercices_faits[0]);
+  console.log(completed_in);
   
   let temps_actuel = Meteor.user().profile.temps + exercices_faits[0].completed_in;
   console.log(temps_actuel);
