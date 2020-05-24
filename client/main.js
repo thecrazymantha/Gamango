@@ -228,10 +228,8 @@ Template.score.helpers({
 
 });
 
-
-  //resetid = setTimeout(chronometre(), 1000);
-  
 }
+
 
 //Defini future variable
 let timer = new Timer();
@@ -278,13 +276,13 @@ Template.canvas.events({
      
 
     // On veut maintenant ajouter un field à ce document : created_at, qui nous sera utile pour calculer le temps mis pour compléter un exercice.
-    let choix_id = exercice_on_button[0]._id;
+    /*let choix_id = exercice_on_button[0]._id;
     console.log(choix_id);
 
     d2 = new Date();
     d2_ms = d2.getTime();
 
-    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}});
+    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}});*/
     
 
 
@@ -326,6 +324,17 @@ Template.canvas.events({
     timer.addEventListener('secondTenthsUpdated', function (e) {
       $('#total_temps').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
    });
+
+   let exercice_on_button = Level_1.find({'on_button': Meteor.user().profile.active_button, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
+
+   let choix_id = exercice_on_button[0]._id;
+    console.log(choix_id);
+
+    d2 = new Date();
+    d2_ms = d2.getTime();
+
+    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}});
+    
   },
   //  Définit ce qu'il se passe lorsqu'on dit qu'on a fini l'exercice
 
@@ -391,6 +400,7 @@ Template.canvas.events({
   // demander comment trier parmi les 5 derniers documents dans les fichiers.
   let exercices_faits = Level_1.find({'completed_in': { $exists: true}, 'owner': Meteor.user()._id},{limit: 1, sort: {date_création:-1}}).fetch();
   console.log(exercices_faits);
+  console.log(Meteor.user().profile.active_button);
 
   // Chercher la valeur de completed_in et l'additioner à la valeur du champs temps de l'utilisateur actif
   console.log(exercices_faits[0].completed_in);
