@@ -3,19 +3,6 @@ import './login.html';
 import './login.css';
 
 //import { Accounts } from 'meteor/accounts-base';
-// Les events page login
-/*
-// eslint-disable-next-line no-undef
-Template.login.events({
-  'click #createAcc'(event) {
-    event.preventDefault();
-    let username = document.getElementById('username').value;
-    let email = document.getElementById('email').value;
-    let password = document.getElementById('password').value;
-    let password2 = document.getElementById('password2').value;
-  },
-});
-*/
 
 //PART v.2
 /*
@@ -25,7 +12,15 @@ Tracker.autorun(function(){
 	}
 });
 */
+//
+Template.login.rendered = function() {
+	$("#login-link").addClass('selected');
+	$("#profile-link").removeClass('selected');
+	$("#classement-link").removeClass('selected');
+	$("#map-link").removeClass('selected');
+}
 
+// Les events page login
 Template.login.events({
 	"submit .form-signin": function(event){
 		var email = trimInput(event.target.email.value);
@@ -52,7 +47,6 @@ Template.login.events({
 	}
 
 });
-
 
 
 //Règles de validation pour le formulaire

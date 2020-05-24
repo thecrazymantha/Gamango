@@ -10,6 +10,7 @@
 
 
 <body>
+ {{> sidebar}}
  {{> bertAlert}}
 </body>
 
@@ -139,11 +140,13 @@
  <div class="row" id="center">
    <div class="col-lg text-center" id="home">
      <div class="btn-group-vertical"></div>
+     {{#if currentUser}}
        <button type="button" class="btn-lg btn-success" id="btn1">CLASSEMENT</button>
        <button type="button" class="btn-lg btn-success" id="btn2">JOUER</button>
+       {{else}}
        <button type="button" class="btn-lg btn-success" id="btn3">Se connecter</button>
        <button type="button" class="btn-lg btn-success" id="btn4">Créer un compte</button>
-       
+       {{/if}}
      </div>
  </div>
 </template>

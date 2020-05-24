@@ -13,6 +13,12 @@ import '../import/api/login/login.js';
 import '../import/api/signup/signup.html';
 import '../import/api/signup/signup.js';
 
+import '../import/api/profile/profile.html';
+import '../import/api/profile/profile.js';
+
+import '../import/api/sidebar/sidebar.html';
+import '../import/api/sidebar/sidebar.js';
+
 import './main.html';
 import './main.css';
 
