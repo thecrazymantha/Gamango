@@ -31,6 +31,7 @@ import { Power2 } from 'gsap/gsap-core';
 // Import pour les collections
 import { Base } from '../import/api/base.js';
 import { Level_1 } from '../import/api/level_1.js';
+import Timer from 'easytimer.js';
 
 
 // Entrer ceci dans Base :
@@ -219,26 +220,17 @@ Template.score.helpers({
     
   },
 
-  'total_temps' : function(){
-
-    // Aller chercher le temps de l'utilisateur de l'utlisateur.
-
-    if (Meteor.user().profile.temps == 0){
-      return "Allez-y essayez !!"
-    } else {
-      return Meteor.user().profile.temps;
-    }
-    
-  },
-
-
-
 });
 
 
+  //resetid = setTimeout(chronometre(), 1000);
+  
+}
+
+//Defini future variable
+let timer = new Timer();
 
 // Définit ce qu'il se passe lorsqu'il y a un événement sur le template canvas
-
 
 Template.canvas.events({
 
@@ -275,7 +267,8 @@ Template.canvas.events({
 
 
     // Et on les affiches
-    display_choix.innerHTML = "Si tu fais " + nombre + " " + exercice +" tu recevras " + points + " points !";
+    display_choix.innerHTML = "Si tu fais " + nombre + " " + exercice + " tu recevras " + points + " points !";
+    
      
 
     // On veut maintenant ajouter un field à ce document : created_at, qui nous sera utile pour calculer le temps mis pour compléter un exercice.
@@ -285,7 +278,9 @@ Template.canvas.events({
     d2 = new Date();
     d2_ms = d2.getTime();
 
-    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}}); 
+    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}});
+    
+
 
 
 
@@ -316,20 +311,34 @@ Template.canvas.events({
 
   },
 
+  //  Définit ce qu'il se passe quand on clique sur start
+    
 
+  'click #btn_debut': function(){ 
+
+    timer.start({precision: 'secondTenths'});
+    timer.addEventListener('secondTenthsUpdated', function (e) {
+      $('#total_temps').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
+   });
+  },
   //  Définit ce qu'il se passe lorsqu'on dit qu'on a fini l'exercice
 
   'click #btn_fini': function(){
+
+  timer.pause();
+  timer.addEventListener('started', function(e){
+    $('#total_temps').html(timer.getTimeValues().toString());
+  });
     
   //  Lorsque le bouton est cliqué on veut que la map et les instructions reprennent leur position initiale. 
   //  Ceci est fait en faisant l'inverse de l'animation faites en cliquant sur la map.
   if(tl.progress() === 1) {
     tl.reverse();
-  }
+  };
 
   if(tl.progress() === 1) {
     tl2.reverse();
-  }
+  };
 
 
   // On va chercher les derniers exercices qui ont été générés pour ce bouton
@@ -391,7 +400,5 @@ Template.canvas.events({
   // Lorsqu'un exercice est fini on veut changer l'apparence du bouton pour cet exercice
   document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#3103fc');
   document.getElementById(Meteor.user().profile.active_button).setAttribute('stroke', '#84ff00');
-}
+  }
 });
-  
-}

@@ -13,9 +13,9 @@ function chronometre(){
 	if (min < 10){
 		min = "0" + min
 	}
-  if (min > 29){
-    document.getElementById("TimerDisplay").innerHTML = '30:00:00'
-  }
+	if (min > 29){
+		document.getElementById("TimerDisplay").innerHTML = '30:00:00'
+	}
 	if (sec < 10){
 		sec = "0" + sec
 	}
