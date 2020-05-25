@@ -30,6 +30,7 @@ import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import pour les trackers
+// Ne sont plus utilisés
 import { Tracker } from 'meteor/tracker';
 
 // Import pour les animations
@@ -40,17 +41,35 @@ import { TimelineMax, Power2 } from 'gsap/gsap-core';
 // Import pour les collections
 import Timer from 'easytimer.js';
 import { Base } from '../import/api/base.js';
+import { Intermediate } from '../import/api/intermediate.js';
+import { Hard } from '../import/api/hard.js';
 import { Level_1 } from '../import/api/level_1.js';
+
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
 // Entrer ceci dans Base :
 /*
+
 Aller dans le terminal : ctrl+¨, puis taper : meteor mongo. Entrer les lignes de codes suivantes les unes après les autres.
 
-db.base.insert({exercice : "pompes", nombre : 20, points : 50 });
-db.base.insert({exercice : "tractions", nombre : 15, points : 100 });
-db.base.insert({exercice : "abdos", nombre : 20, points : 50 });
+db.base.insertMany([{exercice : "pompes", nombre : 20, points : 50 }, {exercice : "tractions", nombre : 15, points : 100 }, {exercice : "abdos", nombre : 20, points : 50 }]);
+
 */
+
+
+// Entrer ceci dans B :
+/*
+db.intermediate.insertMany([{exercice : "pompes", nombre : 40, points : 100 }, {exercice : "tractions", nombre : 30, points : 200 }, {exercice : "abdos", nombre : 40, points : 100 }]);
+*/
+
+
+// Entrer ceci dans Base :
+/*
+db.hard.insertMany([{exercice : "pompes", nombre : 80, points : 200 }, {exercice : "tractions", nombre : 60, points : 400 }, {exercice : "abdos", nombre : 80, points : 200 }]);
+*/
+
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -109,23 +128,61 @@ if (Meteor.isClient) {
   // Définit les events qui se déroulent sur le template Home
 
   Template.Home.events({
+
+    'click #beginner'() {
+
+      Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.difficulty': "beginner" } });
+
+    },
+
+    'click #intermediate'() {
+
+      Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.difficulty': "intermediate" } });
+
+    },
+
+    'click #hard'() {
+
+      Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.difficulty': "hard" } });
+
+    },
+
     'click #btn2'() {
-    /*
-    console.log(Meteor.user().profile);
-    Meteor.users.update({_id: Meteor.userId()}, {$set: {"profile.score": 20}});
-    console.log(Meteor.user().profile.score);
-    console.log(Meteor.userId());
-    */
+    
       //  Lorsqu'on clique sur le bouton 'PLAY' à l'accueil il faut que l'utilisateur soit redirigé vers le jeu, c-à-d la carte avec les exercices à /PLAY.
       FlowRouter.go('play');
 
-
+    
       //  Faire une boucle pour tirer au hasard un exercice pour chaque bouton sur la map.
       for (i = 0; i <= 4; i++) {
-      // Chercher la liste d'exercice dans la base de donnée "Base" .
-        // Transformer en object avec des array pour permettre la recherche avec un index.
-        const liste_exercices = Base.find().fetch();
 
+
+      // Chercher la liste d'exercice dans la base de donnée "Base", "Intermediate" ou "Hard" .
+      // Transformer en object avec des array pour permettre la recherche avec un index.
+
+
+      // Regarder dans le profil de l'utilisateur quel niveau de difficulté il a choisi 
+      let difficulty = Meteor.user().profile.difficulty;
+      console.log(difficulty);
+
+
+        if (difficulty == "beginner"){
+
+          liste_exercices = Base.find().fetch();
+          console.log(liste_exercices);
+
+        } else if (difficulty == "intermediate") {
+
+          liste_exercices = Intermediate.find().fetch();
+          console.log(liste_exercices);
+
+        } else {
+
+          liste_exercices = Hard.find().fetch();
+          console.log(liste_exercices);
+
+        }
+        
         // Chercher la longueur de
         const limite = liste_exercices.length;
         console.log(limite);
@@ -171,6 +228,7 @@ if (Meteor.isClient) {
         const active_on = `btn${i + 1}`;
         row.on_button = active_on;
 
+
         // On veut savoir quand l'exercice à été généré pour ensuite trier Level_1 chronologiquement
         d = new Date();
         row.date_création = d.getTime();
@@ -183,6 +241,23 @@ if (Meteor.isClient) {
 
         // Ajouter cet l'exercice choisi au hasard avec les nouvelles propritétés dans la BDD Level_1
         Level_1.insert(row);
+
+        if (difficulty == "beginner"){
+
+          document.getElementById(active_on).setAttribute('fill', '#f2ff00');
+          document.getElementById(active_on).setAttribute('stroke', '#000000');
+
+        } else if (difficulty == "intermediate") {
+
+          document.getElementById(active_on).setAttribute('fill', '#fcb900');
+          document.getElementById(active_on).setAttribute('stroke', '#000000');
+
+        } else {
+
+          document.getElementById(active_on).setAttribute('fill', '#ff0d00');
+          document.getElementById(active_on).setAttribute('stroke', '#000000');
+
+        }
       }
     },
 
@@ -201,6 +276,15 @@ if (Meteor.isClient) {
 
   });
 
+  Template.Home.helpers({
+
+    difficulty_level() {
+    // Aller chercher le score de l'utlisateur.
+
+      return Meteor.user().profile.difficulty;
+    }
+
+  });
 
   // on Rendered permet de définir des variables et plus avant que la page soit chargée
 
@@ -221,7 +305,7 @@ if (Meteor.isClient) {
     // Aller chercher le score de l'utlisateur.
 
       return Meteor.user().profile.score;
-    },
+    }
 
   });
 }
@@ -402,7 +486,7 @@ Template.canvas.events({
     // total_temps.innerHTML = temps_actuel + " s";
 
     // Lorsqu'un exercice est fini on veut changer l'apparence du bouton pour cet exercice
-    document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#3103fc');
-    document.getElementById(Meteor.user().profile.active_button).setAttribute('stroke', '#84ff00');
+    document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#00ff22');
+    document.getElementById(Meteor.user().profile.active_button).setAttribute('stroke', '#f6ff00');
   },
 });

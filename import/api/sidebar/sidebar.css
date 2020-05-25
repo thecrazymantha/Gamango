@@ -1,3 +1,4 @@
+
 .sidebar-left {
     position: fixed;
     top: 0;
@@ -71,8 +72,9 @@
          -o-transition: all 0.5s;
             transition: all 0.5s;
   }
-  
+  */
   /* Couleur des liens */
+  
   .sidebar-left .sidebar-links a.link-blue {
     border-color: #2495d0;
   }
@@ -101,7 +103,10 @@
     color: #915ba2;
   }
   
+  
   /* Le responsive de la sidebar */
+
+  
   @media (max-width: 900px) {
   
     .main-content{
@@ -133,3 +138,5 @@
     }
   
   }
+
+  

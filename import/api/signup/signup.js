@@ -25,6 +25,7 @@ Template.signup.events({
 				profile: {
 					score : 0,
 					temps : 0,
+					difficulty : "beginner",
 					active_button: ""
 				}
 				

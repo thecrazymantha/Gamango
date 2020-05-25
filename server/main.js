@@ -1,5 +1,9 @@
 import { Meteor } from 'meteor/meteor';
+
 import '../import/api/base.js';
+import '../import/api/intermediate.js';
+import '../import/api/hard.js';
+
 import '../import/api/level_1.js';
 
 
