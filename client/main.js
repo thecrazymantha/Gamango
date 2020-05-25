@@ -498,10 +498,35 @@ Template.canvas.events({
     }
   })
   console.log(exercices);
-  if (exercices.length == 5){
-    FlowRouter.go('home');
-  }
 
-    //console.log(Level_1.find({ owner: Meteor.user()._id }, { limit: 5, sort: { date_création: -1 }, completed_in: { $exists: true } }).fetch());
-  },
+
+    // Lorsque l'utilisateur finit tous les exercices sur la map on veut qu'il soit dirigé à l'accueil.
+    // On veut également garder trace de quand la map a été achevée
+
+    if (exercices.length == 5){
+
+    let d4 = new Date();
+    let year = d4.getFullYear();
+    // +1 car getMonth() donne un mois entre 0 et 11
+    let mois = d4.getMonth()+1;
+    let jour = d4.getDate();
+    let heures = d4.getHours();
+    let minutes = d4.getMinutes();
+    let secondes = d4.getSeconds();
+
+
+    // On va chercher le tableau 'finished_maps' dans le profil de l'utilisateur et on y insère la date et heure où la map a été finie
+
+    let finished_maps = Meteor.user().profile.finished_maps
+    finished_maps.push(jour + "." + mois + "." + year + " à " + heures + ":" + minutes + ":" + secondes);
+    Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.finished_maps': finished_maps } });
+    
+    alert("Bravo vous avez fini la MAP !");
+
+    // Utilisateur redirigé à l'accueil
+
+    setTimeout(function(){ FlowRouter.go('home'); }, 1000);
+  }
+    
+  }
 });

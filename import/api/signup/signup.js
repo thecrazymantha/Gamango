@@ -26,7 +26,8 @@ Template.signup.events({
 					score : 0,
 					temps : 0,
 					difficulty : "beginner",
-					active_button: ""
+					active_button : "",
+					finished_maps : []
 				}
 				
 			}, function(err){
