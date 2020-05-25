@@ -353,13 +353,13 @@ Template.canvas.events({
 
 
     // On veut maintenant ajouter un field à ce document : created_at, qui nous sera utile pour calculer le temps mis pour compléter un exercice.
-    /* let choix_id = exercice_on_button[0]._id;
+    let choix_id = exercice_on_button[0]._id;
     console.log(choix_id);
 
     d2 = new Date();
     d2_ms = d2.getTime();
 
-    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}}); */
+    Level_1.update({"_id": choix_id}, {$set: {"clicked_at": d2_ms}}); 
 
 
     // Lorsqu'un bouton sur la map est cliqué on veut que l'animation commence. La map glisse sur la gauche tandis que le template 'instructions' glisse sur la gauche tout devenant visible
@@ -476,6 +476,7 @@ Template.canvas.events({
     console.log(exercices_faits[0]);
     console.log(completed_in);
 
+    console.log(Meteor.user().profile.temps);
     const temps_actuel = Meteor.user().profile.temps + exercices_faits[0].completed_in;
     console.log(temps_actuel);
     Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.temps': temps_actuel } });
@@ -487,5 +488,20 @@ Template.canvas.events({
     // Lorsqu'un exercice est fini on veut changer l'apparence du bouton pour cet exercice
     document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#00ff22');
     document.getElementById(Meteor.user().profile.active_button).setAttribute('stroke', '#f6ff00');
+    const dernier_exercices = Level_1.find({ owner: Meteor.user()._id }, { limit: 5, sort: { date_création: -1 } }).fetch();
+    console.log(dernier_exercices);
+    let exercices = []
+    dernier_exercices.forEach(element => {
+    // devrait retourner "false" si l'élément n'existe pas dans l'objet
+    if(element.completed_in) {
+      exercices.push(element)
+    }
+  })
+  console.log(exercices);
+  if (exercices.length == 5){
+    FlowRouter.go('home');
+  }
+
+    //console.log(Level_1.find({ owner: Meteor.user()._id }, { limit: 5, sort: { date_création: -1 }, completed_in: { $exists: true } }).fetch());
   },
 });
