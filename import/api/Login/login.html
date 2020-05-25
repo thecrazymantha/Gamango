@@ -5,6 +5,7 @@
 </body>
 
 <template name="login">
+  <div class="contenu">
   <h3>Return <a href="./">home</a>.</h3>
   {{#if currentUser}}
   <h3 class="black">You are logged in.</h3>
@@ -19,4 +20,5 @@
     <p>No Account?<a href="./signup"> Create account</a></p>
   </form>
   {{/if}}
+  </div> 
 </template>
