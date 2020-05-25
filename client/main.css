@@ -18,7 +18,9 @@ img{
   height : 60px;
 }
 
-
+.contenu{
+  margin-left: 170px;
+}
 
 .bouton {
   stroke-dasharray: 15;

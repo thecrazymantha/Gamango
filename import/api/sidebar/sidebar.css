@@ -1,7 +1,7 @@
 
 .sidebar-left {
     position: fixed;
-    float: left;
+    /*float: left;*/
     z-index: 2;
     top: 0;
     left: 0;
