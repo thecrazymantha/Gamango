@@ -157,15 +157,12 @@ if (Meteor.isClient) {
       for (i = 0; i <= 4; i++) {
 
 
-      // Chercher la liste d'exercice dans la base de donnée "Base", "Intermediate" ou "Hard" .
-      // Transformer en object avec des array pour permettre la recherche avec un index.
-
-
       // Regarder dans le profil de l'utilisateur quel niveau de difficulté il a choisi 
       let difficulty = Meteor.user().profile.difficulty;
       console.log(difficulty);
 
-
+      // Selon le niveau de difficulté, aller chercher les exercices dans la base de donnée "Base", "Intermediate" ou "Hard"
+      // Transformer en object avec des array pour permettre la recherche avec un index.
         if (difficulty == "beginner"){
 
           liste_exercices = Base.find().fetch();
@@ -236,11 +233,13 @@ if (Meteor.isClient) {
         console.log(row);
 
         // On veut également savoir qui a créé cet exercice
-
         row.owner = Meteor.user()._id;
 
         // Ajouter cet l'exercice choisi au hasard avec les nouvelles propritétés dans la BDD Level_1
         Level_1.insert(row);
+
+
+        // Selon le niveau de difficulté on veut changer l'apparence de la map. Ici on change la couleur des boutons
 
         if (difficulty == "beginner"){
 
