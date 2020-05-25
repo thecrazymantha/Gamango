@@ -16,11 +16,11 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { Mongo } from 'meteor/mongo';
 import { Base } from '../base.js';
-
+/* 
 Template.classement.helpers({
 
   users() {
-    /*    Meteor.users.find({}, { sort: { score: -1 } }); */
+     Meteor.users.find({}, { sort: { score: -1 } }); 
 
     Meteor.users.find().forEach(function(oneUser) {
       const affichage = `nom : ${oneUser.username} score : ${oneUser.profile.score}`;
@@ -33,6 +33,6 @@ Template.classement.helpers({
   },
 
 
-});
+}); */
 
 /* Meteor.users.find({}, { sort: { score: [['a', 'desc'], ['b', 'asc']] } }); */
