@@ -327,9 +327,9 @@ Template.canvas.events({
   //  Définit ce qu'il se passe lorsqu'on dit qu'on a fini l'exercice
 
   'click #btn_fini'() {
-    timer.pause();
-    timer.addEventListener('started', function(e) {
-      $('#total_temps').html(timer.getTimeValues().toString());
+    timer.pause({ precision: 'secondTenths' });
+    timer.addEventListener('seconTenthsEpdated', function(e) {
+      $('#total_temps').html(timer.getTimeValues().toString('minutes', 'seconds', 'secondTenths'));
     });
 
     //  Lorsque le bouton est cliqué on veut que la map et les instructions reprennent leur position initiale.
