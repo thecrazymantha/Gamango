@@ -1,0 +1,14 @@
+
+.contenu{
+  margin-left: 170px;
+}
+
+#degradeA{
+  background-image: linear-gradient(rgb(0, 238, 255), rgb(255, 193, 7));
+  height: 40px;
+}
+
+#degradeB{
+  background-image: linear-gradient(rgb(255, 193, 7), rgb(0, 238, 255));
+  height: 40px;
+}

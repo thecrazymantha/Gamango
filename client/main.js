@@ -1,49 +1,29 @@
-// Import de base
-import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
-import { FlowRouter } from 'meteor/kadira:flow-router';
-import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-import { Mongo } from 'meteor/mongo';
 
 // Import des fichiers html (pour les templates) et pour le fichier CSS
+
+import '../import/api/score.js';
+
+import '../import/api/map.js';
+
+import '../import/api/home.js';
+
 import '../lib/routing.js';
-import '../import/api/login/login.html';
-import '../import/api/login/login.js';
 
-import '../import/api/signup/signup.html';
-import '../import/api/signup/signup.js';
+import '../import/api/login.js';
 
-import '../import/api/profile/profile.html';
-import '../import/api/profile/profile.js';
+import '../import/api/signup.js';
 
-import '../import/api/sidebar/sidebar.html';
-import '../import/api/sidebar/sidebar.js';
+import '../import/api/profile.js';
 
-import '../import/api/classement/classement.html';
-import '../import/api/classement/classement.js';
+import '../import/api/sidebar.js';
+
+import '../import/api/classement.js';
 
 import './main.html';
+
 import './main.css';
 
-// Import pour bootstrap
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
-// Import pour les trackers
-// Ne sont plus utilisés
-import { Tracker } from 'meteor/tracker';
-
-// Import pour les animations
-import { gsap } from 'gsap';
-import { TimelineMax, Power2 } from 'gsap/gsap-core';
-
-
-// Import pour les collections
-import Timer from 'easytimer.js';
-import { Base } from '../import/api/base.js';
-import { Intermediate } from '../import/api/intermediate.js';
-import { Hard } from '../import/api/hard.js';
-import { Level_1 } from '../import/api/level_1.js';
 
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -73,6 +53,7 @@ db.hard.insertMany([{exercice : "pompes", nombre : 80, points : 200 }, {exercice
 
 //------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+<<<<<<< HEAD
 
 //  Variables globales
 const tl = new TimelineMax({ paused: true });
@@ -530,3 +511,5 @@ Template.canvas.events({
     
   }
 });
+=======
+>>>>>>> bbf6946865b89e990a0f1f4a6eacc26d58fe3482
