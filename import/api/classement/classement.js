@@ -16,33 +16,23 @@ import { Mongo } from 'meteor/mongo';
 import { Base } from '../base.js';
 
 
-/* Meteor.users.find({}, { sort: { 'profile.score': -1 } }); */
-/*
 Template.classement.helpers({
-
-  users() {
-    Meteor.users.find().forEach(function(oneUser) {
-      const affichage = `nom : ${oneUser.username} score : ${oneUser.profile.score}`;
-      console.log(affichage);
-      console.log(oneUser.profile.score);
-      console.log(oneUser);
-    });
-
-    return Meteor.users.find();
+  current_user() {
+    return Meteor.user().username;
   },
-}); */
-
-Template.classement.helpers({
+  user_score() {
+    return Meteor.user().profile.score;
+  },
 
   users () {
     const tableau_classement = Meteor.users.find({}, { sort: { 'profile.score': -1 } }).fetch();
     console.log(tableau_classement);
     console.log(tableau_classement[0].profile);
     console.log(tableau_classement[0].username);
-    const tableau_classement_length = tableau_classement.length -1;
+    const tableau_classement_length = tableau_classement.length - 1;
     const classement = [];
     for (i = 0; i <= tableau_classement_length; i++) {
-      classement.push({ rang: i+1, utilisateur: tableau_classement[i].username, score: tableau_classement[i].profile.score });
+      classement.push({ rang: i + 1, utilisateur: tableau_classement[i].username, score: tableau_classement[i].profile.score });
     }
     console.log(classement);
     return classement;
