@@ -22,13 +22,13 @@ Template.profile.helpers({
   },
   user_finished_maps1() {
     let length= Meteor.user().profile.finished_maps.length;
-    let half = Math.ceil((length-1)/2);
+    let half = Math.floor((length-1)/2)+1;
     return Meteor.user().profile.finished_maps.slice(0, half);
   },
   user_finished_maps2() {
     let length= Meteor.user().profile.finished_maps.length;
-    let half = Math.floor((length-1)/2);
-    return Meteor.user().profile.finished_maps.slice(half+1);
+    let half = Math.floor((length-1)/2+1);
+    return Meteor.user().profile.finished_maps.slice(half);
   },
   user_finished_maps_nb() {
     return Meteor.user().profile.finished_maps.length;
