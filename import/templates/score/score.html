@@ -1,40 +1,40 @@
 
+
 <template name="score">
-  <div class="contenu">
-   <div class="container-fluid">
-  
-     <div id="degradeA" class="row bg-lg">
-       <div class="col">
-         <p> </p>
-         
-       </div>
-     </div>
+  <div class="container-fluid">
+
+    <div id="degradeA" class="row bg-lg">
+    </div>
+
+    <div class="jumbotron bg-warning">
+      <div class="container text-center bg-warning text-dark">
+        <style>
+         /* Remove the jumbotron's default height */ 
+         .jumbotron {
+          height: 5px;
+        }
+        </style>
+             <div class="row">
+                <div class="col-4 bg-warning py-auto">
+                  <b id="Total">Score : {{total_score}}</b>
+                </div>
+                <div class="col-4 bg-warning">
+                  <b id="total_temps">00:00:00</b>
+                </div>
+                <div class="col-4 bg-warning">
+                  <b>LevelUP</b>
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                </div>
+              </div>      
+      </div>
+    </div>
+
   </div>
-         
-   
-     <div class="row">
-       <div class="col-lg-3 bg-warning">
-         <img src="https://cdn.pixabay.com/photo/2014/04/02/11/12/trophy-305554_960_720.png">
-       </div>
-         <div class="col-3 bg-warning py-auto">
-           <b id="Total">Score : {{total_score}}</b>
-         </div>
-         <div class="col-3 bg-warning">
-           <b id="total_temps">00:00:00</b>
-         </div>
-       <div class="col-3 bg-warning">
-         <b>LevelUP</b>
-         <div class="progress">
-         <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-       </div>
-       </div>
-     </div>
-   
-    
-   </div>
-   <div class="container-fluid">
-     {{> Template.dynamic template=main}}
-   </div>
-   
   
-  </template>
+  <div class="container-fluid">
+    {{> Template.dynamic template=main}}
+  </div>
+
+</template>
