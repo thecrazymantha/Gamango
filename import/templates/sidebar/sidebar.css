@@ -90,14 +90,21 @@
   .sidebar-left .sidebar-links a.link-yellow i.fa {
     color: #f7cb5b;
   }
-  
+
+  .sidebar-left .sidebar-links a.link-red {
+    border-color: #ff0000;
+  }
+  .sidebar-left .sidebar-links a.link-red i.fa {
+    color: #ff0000;
+  }  
+
   .sidebar-left .sidebar-links a.link-green {
     border-color: #52b859;
   }
   .sidebar-left .sidebar-links a.link-green i.fa {
     color: #52b859;
   }
-  
+
   .sidebar-left .sidebar-links a.link-purple {
     border-color: #915ba2;
   }

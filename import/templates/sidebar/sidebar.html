@@ -5,9 +5,11 @@
 	<a class="company-logo" href="./">Gamango</a>
 		<div class="sidebar-links">
 			{{#if currentUser}}
-			<a class="link-blue" href="/profile" id="profile-link"><i class="fa fa-user"></i>Profile</a>
+			<a class="link-blue" href="/profile" id="profile-link"><i class="fa fa-user"></i>Profil</a>
 			<a class="link-yellow" href="/classement" id="classement-link"><i class="fa fa-trophy"></i>Classement</a>
-            <a class="link-green" href="/PLAY" id="map-link"><i class="fa fa-map"></i>Map</a>
+			<a class="link-red" href="/PLAY" id="difficulté-link"><i class="fa fa-bars"></i>Difficulté</a>
+			<a class="link-green" href="/PLAY" id="map-link"><i class="fa fa-map"></i>Map</a>
+			
             {{else}}
 			{{/if}}
 			{{#if currentUser}}
