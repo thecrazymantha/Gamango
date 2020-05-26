@@ -14,7 +14,7 @@ Template.sidebar.events({
 				Bert.alert(err.reason, "danger", "growl-top-right");
 			} else {
 				FlowRouter.go('/');
-				Bert.alert("You Are Now Logged Out", "success", "growl-top-right");
+				Bert.alert("Vous êtes maintenant déconnecté.", "success", "growl-top-right");
 			}
 		});
 	},

@@ -6,18 +6,18 @@
 
 <template name="login">
   <div class="contenu">
-  <h3>Return <a href="./">home</a>.</h3>
+    <h3>Retourner à la page d'<a href="./">accueil</a>.</h3>
   {{#if currentUser}}
-  <h3 class="black">You are logged in.</h3>
+  <h3 class="black">Vous êtes connecté !</h3>
   {{else}}
   <form class="form-signin">
-    <h2 class="form-signin-heading">Account loggin</h2>
-    <label for="email" class="sr-only">Email Adress</label>
-    <input type="email" name="email" id="email" class="form-control" placeholder="Email Adress">
-    <label for="password" class="sr-only">Password</label>
-    <input type="password" name="password" id="password" class="form-control" placeholder="Password">
-    <button type="submit" id="login-btn" class="btn btn-lg btn-success btn-block">Log In</button>
-    <p>No Account?<a href="./signup"> Create account</a></p>
+    <h2 class="form-signin-heading">Se connecter</h2>
+    <label for="email" class="sr-only">Adresse E-mail</label>
+    <input type="email" name="email" id="email" class="form-control" placeholder="Adresse E-mail">
+    <label for="password" class="sr-only">Mot de passe</label>
+    <input type="password" name="password" id="password" class="form-control" placeholder="Mot de passe">
+    <button type="submit" id="login-btn" class="btn btn-lg btn-success btn-block">Se connecter</button>
+    <p>Vous n'avez pas de compte ?<a href="./signup"> Créer un compte</a></p>
   </form>
   {{/if}}
   </div> 
