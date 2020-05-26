@@ -5,6 +5,7 @@
        <h1>Bienvenue dans l'univers GAMANGO</h1>
      </div>
     </div>
+    {{#if currentUser}}
     <div class="row align-items-center" id="Consignes">
       <p>1. Pour commencer à jouer, veuillez vous créer un compte via le bouton "Se connecter" dans le menu.<br>
          2. A présent, choisissez un degré de difficulté. (Nous vous recommandons de commencer par le niveau "Facile").<br>
@@ -13,29 +14,15 @@
          Ensuite, consultez vos score dans la section "Profil" et comparez les avec les autres utilisateurs dans la section "Classement".
       </p>
     </div>
-
+    {{else}}
    <div class="row" id="center">
      <div class="col-lg text-center" id="home">
-       <div class="btn-group-vertical"></div>
-       {{#if currentUser}}
-  
-          <button type="button" class="btn-lg btn-success" id="btn1">CLASSEMENT</button>
-          <button type="button" class="btn-lg btn-success" id="btn2">JOUER</button>
-          <div class="dropdown">
-          <button class="btn-lg btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-            {{difficulty_level}}
-          </button>
-          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" id="beginner">Beginner</a>
-            <a class="dropdown-item" id="intermediate">Intermediate</a>
-            <a class="dropdown-item" id="hard">Hard</a>
-          </div>
-        </div>
-         {{else}}
+         
          <button type="button" class="btn-lg btn-success" id="btn3">Se connecter</button>
          <button type="button" class="btn-lg btn-success" id="btn4">Créer un compte</button>
-         {{/if}}
+         
        </div>
    </div>
+   {{/if}}
   </div>
   </template>

@@ -7,25 +7,23 @@
 			{{#if currentUser}}
 			<a class="link-blue" href="/profile" id="profile-link"><i class="fa fa-user"></i>Profil</a>
 			<a class="link-yellow" href="/classement" id="classement-link"><i class="fa fa-trophy"></i>Classement</a>
-			<a class="link-red dropdown btn-lg btn-success dropdown-toggle" data-toggle="dropdown" type="button" id="difficulté-link">
-				
-				<div class="dropdown">
+			<a class="link-red dropdown dropdown-toggle" type="button" data-toggle="dropdown"><i class="fa fa-bars"></i>{{difficulty_level}}</a>
 					<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-					  <a class="dropdown-item" id="beginner">Beginner</a>
-					  <a class="dropdown-item" id="intermediate">Intermediate</a>
-					  <a class="dropdown-item" id="hard">Hard</a>
+					  <a class="dropdown-item" id="beginner-link">Beginner</a>
+					  <a class="dropdown-item" id="intermediate-link">Intermediate</a>
+					  <a class="dropdown-item" id="hard-link">Hard</a>
 					</div>
-				  </div>
+				
 				  
-				<i class="fa fa-bars"></i>{{difficulty_level}}</a>
+				
 			<a class="link-green" href="/PLAY" id="map-link"><i class="fa fa-map"></i>Carte</a>
 			
-            {{else}}
+      {{else}}
 			{{/if}}
-			{{#if currentUser}}
-			<a class="link-purple logout" href="#" id="logout-link"><i class="fa fa-sign-out"></i>Se déconnecter</a>
-			{{else}}
-			<a class="" href="./login" id="login-link"><i class="fa fa-sign-in"></i>Se connecter</a>
+				{{#if currentUser}}
+				<a class="link-purple logout" href="#" id="logout-link"><i class="fa fa-sign-out"></i>Se déconnecter</a>
+				{{else}}
+				<a class="" href="./login" id="login-link"><i class="fa fa-sign-in"></i>Se connecter</a>
 			{{/if}}
 		</div>
 	</aside>

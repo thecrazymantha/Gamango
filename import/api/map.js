@@ -253,7 +253,7 @@ Template.canvas.events({
 
     // Utilisateur redirigé à l'accueil
 
-    setTimeout(function(){ FlowRouter.go('home'); }, 1000);
+    setTimeout(function(){ FlowRouter.go('profile'); }, 1000);
   }
     
   }
