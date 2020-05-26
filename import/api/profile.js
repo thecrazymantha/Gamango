@@ -15,7 +15,13 @@ Template.profile.helpers({
     return Meteor.user().profile.score;
   },
   user_temps() {
-    return Meteor.user().profile.temps;
+    let raw = Meteor.user().profile.temps;
+    let heures = Math.floor(raw/3600);
+    raw %= 3600;
+    let minutes = Math.floor(raw/60);
+    let secondes = (raw%60).toFixed(0);
+    return heures + " heures " + minutes + " minutes " + secondes + " secondes";
+
   },
   user_difficulty() {
     return Meteor.user().profile.difficulty;
