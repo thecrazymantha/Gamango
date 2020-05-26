@@ -131,7 +131,7 @@ Template.canvas.events({
   'click #btn_debut'() {
     timer.start({ precision: 'secondTenths' });
     timer.addEventListener('secondTenthsUpdated', function (e) {
-      $('#total_temps').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']));
+      $('#total_temps').html(timer.getTimeValues().toString(['minutes', 'seconds', 'secondTenths']) + "0");
     });
 
   },
