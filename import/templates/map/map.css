@@ -1,0 +1,20 @@
+
+.bouton {
+  stroke-dasharray: 15;
+  stroke-width: 2;
+  stroke-dashoffset: 15;
+  animation: dash 5s infinite linear ;
+}
+@keyframes dash {
+from {
+  stroke-dashoffset: 0;
+}
+to {
+  stroke-dashoffset: 150;
+  
+}
+}
+
+#instructions{
+  opacity: 0;
+}
