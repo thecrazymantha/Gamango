@@ -55,7 +55,7 @@ let isNotEmpty = function(value) {
   if (value && value !== '') {
     return true;
   }
-  Bert.alert('Please fill in all fields', 'danger', 'growl-top-right');
+  Bert.alert("S'il-vous-plaît remplissez tout les champs !", 'danger', 'growl-top-right');
   return false;
 };
 
@@ -65,14 +65,14 @@ isEmail = function(value) {
   if (filter.test(value)) {
     return true;
   }
-  Bert.alert('Please use a valid email address', 'danger', 'growl-top-right');
+  Bert.alert("S'il-vous-plaît utilisez un eadresse E-mail valide !", 'danger', 'growl-top-right');
   return false;
 };
 
 // Check Password Field
 isValidPassword = function(password) {
   if (password.length < 6) {
-    Bert.alert('Password must be at least 6 characters', 'danger', 'growl-top-right');
+    Bert.alert("Le mot de passe doit contenir 6 charactères au minimum", 'danger', 'growl-top-right');
     return false;
   }
   return true;
@@ -84,7 +84,7 @@ areValidPasswords = function(password, confirm) {
     return false;
   }
   if (password !== confirm) {
-    Bert.alert('Passwords do not match', 'danger', 'growl-top-right');
+    Bert.alert("Les mots de passe ne correspondent pas", 'danger', 'growl-top-right');
     return false;
   }
   return true;

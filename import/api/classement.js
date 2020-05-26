@@ -2,11 +2,10 @@
 import './login.js';
 import './signup.js';
 
-// import du CSS et du HTML
-import '../templates/classement/classement.css';
+// import du html
 import '../templates/classement/classement.html';
 
-// Import pour les collections
+// import pour les collections
 
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
