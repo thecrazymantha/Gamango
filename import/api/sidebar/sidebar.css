@@ -1,14 +1,17 @@
+
 .sidebar-left {
     position: fixed;
+    /*float: left;*/
+    z-index: 2;
     top: 0;
     left: 0;
     background-color:#28A745;
     background-size: cover;
-    width: 200px;
+    width: 150px;
     height: 100%;
     padding: 20px 0;
   }
-  
+
   .icon {
     display: block;
     margin: 0 auto;
@@ -71,8 +74,9 @@
          -o-transition: all 0.5s;
             transition: all 0.5s;
   }
-  
+  */
   /* Couleur des liens */
+  
   .sidebar-left .sidebar-links a.link-blue {
     border-color: #2495d0;
   }
@@ -101,7 +105,10 @@
     color: #915ba2;
   }
   
+  
   /* Le responsive de la sidebar */
+
+  
   @media (max-width: 900px) {
   
     .main-content{
@@ -133,3 +140,37 @@
     }
   
   }
+/* Pour les plus petis écrans */
+@media (max-width: 450px) {
+
+  .sidebar-left {
+    padding: 20px 0;
+  }
+
+  .sidebar-left .sidebar-links {
+    text-align: center;
+    margin: 20px auto 0;
+  }
+
+  .sidebar-left .sidebar-links a {
+    display: block;
+    max-width: 240px;
+    width: auto;
+    vertical-align: middle;
+    text-align: left;
+    margin: 0 auto 5px;
+    padding: 10px 25px;
+    border-top: none;
+    border-left-width: 2px;
+    border-left-style: solid;
+  }
+
+  .sidebar-left .sidebar-links a i.fa {
+    display: inline-block;
+    font-size: 20px;
+    width: 20px;
+    margin: 0 20px 0 0;
+    vertical-align: middle;
+  }
+
+}

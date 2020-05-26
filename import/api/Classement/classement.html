@@ -1,5 +1,54 @@
-<template name="classement">
+<!-- <template name="classement">
+  <div class="contenu">
   <h1>Classement</h1>
+  <ul>
+   {{#each users}}
+    <li>{{this.rang}}{{this.utilisateur}}{{this.score}}</li>
+  {{/each}}
+</ul>
+</div>
+</template> -->
+<template name="classement">
+  <div class="contenu">
+      <div class="jumbotron jumbotron-fluid mb-0" id="jumbo">
+          <div class="container">
+              <h1 class="display-4 text-primary">{{current_user}}     <small class="text-info float-right">score: {{user_score}}</small></h1>
+              <br>
+              <hr class="my-4 text-warning">
+              <p class="lead">C L A S S E M E N T </p>
+              <hr class="my-4">
+              <br>
+              <br>
+          </div>
+          
+          <div class="row align-items-center">
+            <div class="col-2 text-center align-self-center">
+                <h4><small class="text-primary">RANG : </small></h4>
+            </div>
+            <div class="col-6 text-center align-self-center">
+                <h4><small class="text-primary">USERNAME : </small></h4>
+            </div>
+            <div class="col-4 text-center align-self-center">
+                <h4><small class="text-primary">SCORE : </small></h4>
+            </div>
+          </div>
+
+            <div class="row align-items-center">
+               {{#each users}}
+             
+              <div class="col-2 text-center align-self-center">
+                  <h4><small class="text-primary"> {{this.rang}} </small></h4>
+              </div>
+              <div class="col-6 text-center align-self-center">
+                  <h4><small class="text-primary"> {{this.utilisateur}} </small></h4>
+              </div>
+              <div class="col-4 text-center align-self-center">
+                  <h4><small class="text-primary"> {{this.score}} </small></h4>
+              </div> 
+              
+                {{/each}}
+              
+            </div>
+      </div>
+  </div>
 </template>
-
-

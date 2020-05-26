@@ -5,18 +5,19 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
- <title>projet_bootstrap</title>
+ <title>Gamango</title>
 </head>
 
 
 <body>
- {{> sidebar}}
- {{> bertAlert}}
+{{> bertAlert}}
+{{> sidebar}}
+ 
 </body>
 
 
 <template name="score">
-
+<div class="contenu">
  <div class="container-fluid">
 
    <div id="degradeA" class="row bg-lg">
@@ -25,6 +26,7 @@
        
      </div>
    </div>
+</div>
        
  
    <div class="row">
@@ -56,7 +58,7 @@
 
 
 <template name="canvas" id="map">
-
+<div class="contenu">
  <div class="row justify-content-end">
    <div class="col-lg-4" id="div_for_svg">
      <svg id="svg1" width=500 height=715 >
@@ -128,12 +130,13 @@
 
  
 
- 
+</div>
 </template>
 
 
 <template name="Home">
- <div class="row align-items-center" id="half_center">
+<div class="contenu">
+  <div class="row align-items-center" id="half_center">
    <div class="col-lg text-center align-self-center" id="welcome">
      <h1>Welcome to GAMANGO</h1>
    </div>
@@ -142,13 +145,25 @@
    <div class="col-lg text-center" id="home">
      <div class="btn-group-vertical"></div>
      {{#if currentUser}}
-       <button type="button" class="btn-lg btn-success" id="btn1">CLASSEMENT</button>
-       <button type="button" class="btn-lg btn-success" id="btn2">JOUER</button>
+
+        <button type="button" class="btn-lg btn-success" id="btn1">CLASSEMENT</button>
+        <button type="button" class="btn-lg btn-success" id="btn2">JOUER</button>
+        <div class="dropdown">
+        <button class="btn-lg btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+          {{difficulty_level}}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" id="beginner">Beginner</a>
+          <a class="dropdown-item" id="intermediate">Intermediate</a>
+          <a class="dropdown-item" id="hard">Hard</a>
+        </div>
+      </div>
        {{else}}
        <button type="button" class="btn-lg btn-success" id="btn3">Se connecter</button>
        <button type="button" class="btn-lg btn-success" id="btn4">Créer un compte</button>
        {{/if}}
      </div>
  </div>
+</div>
 </template>
 
