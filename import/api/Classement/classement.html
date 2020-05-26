@@ -1,10 +1,11 @@
 <template name="classement">
   <div class="contenu">
   <h1>Classement</h1>
-  
+  <ul>
    {{#each users}}
-    {{user}}
+    <li>{{this.rang}}{{this.utilisateur}}{{this.score}}</li>
   {{/each}}
+</ul>
 </div>
 <!--   <div class="player {{selected}}">
     <span class="name">{{ name }}</span>

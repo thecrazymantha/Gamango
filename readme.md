@@ -1,6 +1,6 @@
 # Gamango - README
 ### *Gamango ver. 1.0*
-Par *Matthieu Perrin, Thomas Rywalski, Zakari Rabet et Sammantha Allendes*
+Par *Matthieu Perring, Thomas Rywalski, Zakari Rabet et Samantha Allendes*
 
 Projet réalisé dans le cadre du cours
 *Programmation pour Internett II - Meteor.jy* donné par Loïc Cattani et Loris Rimaz
@@ -51,5 +51,5 @@ Les principaux modules Meteor utilisés dans ce projet sont :
 
 Certaines libraries et modules utilisés pour le développement sont parfois soumis à un copyright par leurs auteurs respectifs.
 
-Copyright © 2020 - l'équipe de développement de Gamango : *Matthieu Perrin, Thomas Rywalski, Zakari Rabet et Sammantha Allendes*
+Copyright © 2020 - l'équipe de développement de Gamango : *Matthieu Perring, Thomas Rywalski, Zakari Rabet et Samantha Allendes*
 
