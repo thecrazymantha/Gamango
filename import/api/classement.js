@@ -4,6 +4,7 @@ import './signup.js';
 
 // import du html
 import '../templates/classement/classement.html';
+import '../templates/classement/classement.css';
 
 // import pour les collections
 
@@ -13,6 +14,7 @@ import { FlowRouter } from 'meteor/kadira:flow-router';
 import { BlazeLayout } from 'meteor/kadira:blaze-layout';
 import { Mongo } from 'meteor/mongo';
 import { Base } from './collections/base.js';
+
 
 
 Template.classement.helpers({
@@ -28,12 +30,13 @@ Template.classement.helpers({
     console.log(tableau_classement);
     console.log(tableau_classement[0].profile);
     console.log(tableau_classement[0].username);
-    const tableau_classement_length = tableau_classement.length - 1;
-    const classement = [];
+    tableau_classement_length = tableau_classement.length - 1;
+    let classement = [];
     for (i = 0; i <= tableau_classement_length; i++) {
       classement.push({ rang: i + 1, utilisateur: tableau_classement[i].username, score: tableau_classement[i].profile.score });
     }
     console.log(classement);
     return classement;
-  },
+  }
+
 });
