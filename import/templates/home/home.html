@@ -6,20 +6,31 @@
      </div>
     </div>
     {{#if currentUser}}
+  <div class="container">
     <div class="row align-items-center">
-      <p id="Consignes">1. Pour commencer à jouer, veuillez vous créer un compte via le bouton <span class="orange">"Se connecter"</span> dans le menu. <br>
-         2. A présent, choisissez un degré de <span class="orange">difficulté</span>. (Nous vous recommandons de commencer par le niveau "Beginner"). <br>
-         3. Voilà, vous pouvez commencer le premier niveau de la carte en appuyant sur le bouton "Carte". <br>
-         Là, nous avons séléctionné des <span class="orange">exercices</span> pour vous en fonction du niveau choisi. <br>
-         N'hésitez pas à changer de difficulté pour tester vos limites et vous surpassez.<br>
-         4. Ensuite, consultez vos <span class="orange">score</span> dans la section <span class="orange">"Profil"</span> 
-         et comparez les avec les autres utilisateurs dans la section <span class="orange">"Classement"</span>.<br><br>
-         Bien du plaisir dans cette nouvelle aventure <span class="orange">colorée</span> !!
+      <p id="Consignes">
+        <ol>
+          <li>Pour commencer à jouer, veuillez vous créer un compte via le bouton <span class="orange">"Se connecter"</span> dans le menu. </li>
+          <li>A présent, choisissez un degré de <span class="orange">difficulté</span>. (Nous vous recommandons de commencer par le niveau "Beginner").</li>
+          <li>Voilà, vous pouvez commencer le premier niveau de la carte en appuyant sur le bouton "Carte".<br>
+            Là, nous avons séléctionné des <span class="orange">exercices</span> pour vous en fonction du niveau choisi. <br>
+            N'hésitez pas à changer de difficulté pour tester vos limites et vous surpassez.<br>
+          </li>
+          <li>Ensuite, consultez vos <span class="orange">score</span> dans la section <span class="orange">"Profil"</span> 
+            et comparez les avec les autres utilisateurs dans la section <span class="orange">"Classement"</span>.
+          </li>
+        </ol>
+        <br>        
       </p>
-      </div>
-    <div class="row align-items-center">
-      <p id="Salutations">L'équipe <span class="orange">Gamango</span>.</p>
-    </div>  
+    </div>
+
+    
+      <p id="Salutations">
+        Bien du plaisir dans cette nouvelle aventure <span class="orange">colorée</span> !!
+        <br>
+        L'équipe <span class="orange">Gamango</span>.</p>
+      
+    </div>
     {{else}}
    <div class="row" id="center">
      <div class="col-lg text-center" id="home">
