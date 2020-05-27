@@ -25,10 +25,11 @@ import '../templates/sidebar/sidebar.html';
 // Import pour les routes
 import '../../lib/routing.js';
 
-
+/*
 Template.sidebar.rendered = function(){
 
 }
+*/
 
 Template.sidebar.events({
 	"click .logout": function(event){
