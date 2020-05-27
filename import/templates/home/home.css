@@ -8,3 +8,20 @@
 #btn1, #btn2 {
   width: 156.17px;
 }
+
+#Bienvenue{
+  font-size: 55px;
+}
+
+#Consignes{
+  font-size: 20px;
+}
+
+#Salutations{
+  font-size: 20px;
+  text-align: end;
+}
+
+.orange{
+  color: orange;
+}

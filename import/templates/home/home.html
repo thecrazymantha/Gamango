@@ -2,18 +2,22 @@
   <div class="contenu">
     <div class="row align-items-center" id="half_center">
      <div class="col-lg text-center align-self-center" id="welcome">
-       <h1>Bienvenue dans l'univers GAMANGO</h1>
+       <h1 id="Bienvenue">Bienvenue dans l'univers <span class="orange">GAMANGO</span></h1>
      </div>
     </div>
     {{#if currentUser}}
-    <div class="row align-items-center" id="Consignes">
-      <p>1. Pour commencer à jouer, veuillez vous créer un compte via le bouton "Se connecter" dans le menu.<br>
-         2. A présent, choisissez un degré de difficulté. (Nous vous recommandons de commencer par le niveau "Facile").<br>
-         3. Voilà, vous pouvez commencer le premier niveau de la carte en appuyant sur le bouton "Carte".<br><br>
-         Bien du plaisir dans cette nouvelle aventure colorée !!<br><br>
-         Ensuite, consultez vos score dans la section "Profil" et comparez les avec les autres utilisateurs dans la section "Classement".
+    <div class="row align-items-center">
+      <p id="Consignes">1. Pour commencer à jouer, veuillez vous créer un compte via le bouton <span class="orange">"Se connecter"</span> dans le menu. <br>
+         2. A présent, choisissez un degré de <span class="orange">difficulté</span>. (Nous vous recommandons de commencer par le niveau "Beginner"). <br>
+         3. Voilà, vous pouvez commencer le premier niveau de la carte en appuyant sur le bouton "Carte". <br>
+         Là, nous avons séléctionné des <span class="orange">exercices</span> pour vous en fonction du niveau choisi. <br>
+         N'hésitez pas à changer de difficulté pour tester vos limites et vous surpassez.<br>
+         4. Ensuite, consultez vos <span class="orange">score</span> dans la section <span class="orange">"Profil"</span> 
+         et comparez les avec les autres utilisateurs dans la section <span class="orange">"Classement"</span>.<br><br>
+         Bien du plaisir dans cette nouvelle aventure <span class="orange">colorée</span> !!
       </p>
-    </div>
+      <p id="Salutations">L'équipe <span class="orange">Gamango</span>.</p>
+      </div>
     {{else}}
    <div class="row" id="center">
      <div class="col-lg text-center" id="home">
