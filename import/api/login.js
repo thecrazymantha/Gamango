@@ -1,19 +1,8 @@
 // import du CSS et du HTML
-import '../templates/login/login.css';
 import '../templates/login/login.html';
 
 
-// import { Accounts } from 'meteor/accounts-base';
 
-// PART v.2
-/*
-Tracker.autorun(function(){
-	if(Meteor.userId()){
-		console.log(Meteor.userId);
-	}
-});
-*/
-//
 Template.login.rendered = function() {
   $('#login-link').addClass('selected');
   $('#profile-link').removeClass('selected');

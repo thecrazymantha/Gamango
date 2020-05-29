@@ -1,14 +1,8 @@
 
 
 import { Template } from 'meteor/templating';
-import { ReactiveVar } from 'meteor/reactive-var';
 import { FlowRouter } from 'meteor/kadira:flow-router';
-import { BlazeLayout } from 'meteor/kadira:blaze-layout';
-import { Mongo } from 'meteor/mongo';
 
-// Import pour bootstrap
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Import pour les collections
 

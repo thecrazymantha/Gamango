@@ -18,12 +18,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../templates/map/map.css';
 import '../templates/map/map.html';
 
-
 // Import pour les collections
 import Timer from 'easytimer.js';
-import { Base } from './collections/base.js';
-import { Intermediate } from './collections/intermediate.js';
-import { Hard } from './collections/hard.js';
 import { Level_1 } from './collections/level_1.js';
 
 // Import pour les routes
@@ -249,7 +245,7 @@ Template.canvas.events({
     finished_maps.push(jour + "." + mois + "." + year + " à " + heures + ":" + minutes + ":" + secondes);
     Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.finished_maps': finished_maps } });
     
-    alert("Bravo vous avez fini la MAP !");
+    Bert.alert("Bravo vous avez fini la MAP !", 'success', 'growl-top-right', 'fas fa-check');
 
     // Utilisateur redirigé à l'accueil
 

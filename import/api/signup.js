@@ -1,5 +1,4 @@
 // import du CSS et du HTML
-import '../templates/signup/signup.css';
 import '../templates/signup/signup.html';
 
 Template.signup.rendered = function() {
