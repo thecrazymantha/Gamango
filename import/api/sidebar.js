@@ -3,7 +3,6 @@
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-
 // Import pour les collections
 
 import { Base } from './collections/base.js';
@@ -15,15 +14,12 @@ import { Level_1 } from './collections/level_1.js';
 import '../templates/sidebar/sidebar.css';
 import '../templates/sidebar/sidebar.html';
 
-
 // Import pour les routes
 import '../../lib/routing.js';
 
-/*
-Template.sidebar.rendered = function(){
 
-}
-*/
+
+
 
 Template.sidebar.events({
 	"click .logout": function(event){
@@ -178,8 +174,8 @@ Template.sidebar.events({
 Template.sidebar.helpers({
 
   difficulty_level() {
-  // Aller chercher le score de l'utlisateur.
 
+  // Aller chercher le niveau de difficulté choisi par l'utlisateur afin de l'afficher 
     return Meteor.user().profile.difficulty;
   }
 

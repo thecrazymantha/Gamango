@@ -244,11 +244,11 @@ Template.canvas.events({
     let finished_maps = Meteor.user().profile.finished_maps
     finished_maps.push(jour + "." + mois + "." + year + " à " + heures + ":" + minutes + ":" + secondes);
     Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.finished_maps': finished_maps } });
-    
+
+    // Petit message de félicitation pour motiver le joueur
     Bert.alert("Bravo vous avez fini la MAP !", 'success', 'growl-top-right', 'fas fa-check');
 
-    // Utilisateur redirigé à l'accueil
-
+    // Utilisateur redirigé à son profil 
     setTimeout(function(){ FlowRouter.go('profile'); }, 1000);
   }
     
