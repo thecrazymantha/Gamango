@@ -20,7 +20,7 @@ Cette section décrit les différentes étapes d'utilisation.
 ![Alt text](https://github.com/thecrazymantha/Gamango/blob/master/gamango/gamango%20page%20accueil.PNG "Page home")
 * L'utilisateur peut consulter son profil dans lequel les informations concernant son score, le temps de passé à effectuer des exercies et le nombre de map qu'il aura termniné seront affichées.
 ![Alt text](https://github.com/thecrazymantha/Gamango/blob/master/gamango/gamango%20page%20accueil.PNG "Page profile")
-* L'utilisateur peut consulter le classement des utilisateurs. Ceci sont classés selon leurs scores avec leurs username.
+* L'utilisateur peut consulter le classement des utilisateurs. Ceci sont classés selon leurs scores avec leurs username. Il est possible, en cliquant sur le username dans le classement, de consulter les 5 dernières dates (au maximum) où cet utilisateur à fini une map.
 ![Alt text](https://github.com/thecrazymantha/Gamango/blob/master/gamango/gamango%20page%20classement.PNG "Page classement")
 * Depuis la sidebar l'utilisateur peut séléctionner le niveau de difficulté (beginner, intermediate, et hard)
 ![Alt text](https://github.com/thecrazymantha/Gamango/blob/master/gamango/gamango%20s%C3%A9l%C3%A9ction%20niveau.PNG "niveau")
