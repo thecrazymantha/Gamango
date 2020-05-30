@@ -7,6 +7,9 @@ Projet réalisé dans le cadre du cours
 
 Faculté des lettres - Université de Lausanne - Février à Mai 2020 Github
 ## Description
+
+**Afin d'assurer le bon fonctionnement de l'app, il est nécessaire _d'ajouter manuellement le contenu de 3 collections_ (base, intermediate et hard) comme indiqué dans le fichier main.js du client.**
+
 Le projet Gamango a pour but de proposer des exercices physiques de manière ludique afin de favoriser la pratique sportive réguilière. Lorsqu'il joue, l'utilisateur accède à une map selon le niveau de difficulté choisi sur laquelle divers exercices lui sont proposés. Au fur et à mseure qu'il progresse dans la map, l'utilisateur reçois des points. L'utilisateur a également accès à un classement des utilisateurs selon leurs scores.
 
 Le public ciblé est les personnes souhaitant s'initier au sport ou mainternir une régulation dans la pratique des exercices. L’application offrant plusieurs niveaux d'exercices, elle permet de cibler des personnes complètement débutantes à des personnes ayant un niveau intermédiaire dans la pratique journalières de sport. Le côté gamification de l’application qui permet de fidéliser les utilisateurs est plutôt destiné à un public jeune. L’application étant en français, le public cible est francophone.

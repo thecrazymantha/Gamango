@@ -39,13 +39,13 @@ db.base.insertMany([{exercice : "pompes", nombre : 20, points : 50 }, {exercice 
 */
 
 
-// Entrer ceci dans B :
+// Entrer ceci dans intermediate :
 /*
 db.intermediate.insertMany([{exercice : "pompes", nombre : 40, points : 100 }, {exercice : "tractions", nombre : 30, points : 200 }, {exercice : "abdos", nombre : 40, points : 100 }]);
 */
 
 
-// Entrer ceci dans Base :
+// Entrer ceci dans hard :
 /*
 db.hard.insertMany([{exercice : "pompes", nombre : 80, points : 200 }, {exercice : "tractions", nombre : 60, points : 400 }, {exercice : "abdos", nombre : 80, points : 200 }]);
 */
