@@ -1,16 +1,16 @@
-
+// Imports de base
 
 import { Template } from 'meteor/templating';
 import { FlowRouter } from 'meteor/kadira:flow-router';
 
-// Import pour les collections
+// Imports pour les collections
 
 import { Base } from './collections/base.js';
 import { Intermediate } from './collections/intermediate.js';
 import { Hard } from './collections/hard.js';
 import { Level_1 } from './collections/level_1.js';
 
-// import du CSS et du HTML
+// Imports du CSS et du HTML
 import '../templates/sidebar/sidebar.css';
 import '../templates/sidebar/sidebar.html';
 
@@ -69,52 +69,42 @@ Template.sidebar.events({
 
     // Regarder dans le profil de l'utilisateur quel niveau de difficulté il a choisi 
     let difficulty = Meteor.user().profile.difficulty;
-    console.log(difficulty);
 
     // Selon le niveau de difficulté, aller chercher les exercices dans la base de donnée "Base", "Intermediate" ou "Hard"
     // Transformer en object avec des array pour permettre la recherche avec un index.
       if (difficulty == "beginner"){
 
         liste_exercices = Base.find().fetch();
-        console.log(liste_exercices);
 
       } else if (difficulty == "intermediate") {
 
         liste_exercices = Intermediate.find().fetch();
-        console.log(liste_exercices);
 
       } else {
 
         liste_exercices = Hard.find().fetch();
-        console.log(liste_exercices);
 
       }
       
       // Chercher la longueur de
       const limite = liste_exercices.length;
-      console.log(limite);
 
       //  Générer un nombre aléatoire entre 0 et la limite (nombre d'objets dans la BDD -1).
       // let rand_nb = Math.floor(Math.random() * (limite-0.00001) );
       const rand_nb = Math.round(Math.random() * (limite - 1));
-      console.log(rand_nb);
 
       //  Chercher l'object qui correspond à l'index : rand_nb .
       const row = liste_exercices[rand_nb];
-      console.log(row);
 
       //  Chercher le nom de l'exercice à cette index.
       const rand_exercice = row.exercice;
-      console.log(rand_exercice);
 
 
       //  Définir pour chaque exercice généré aléatoirement l'id où le field 'exercice' devra être imprimé. (les id des zone de text dans le svg sont appelés text + 1-5)
       const identity = `text${i + 1}`;
-      console.log(identity);
 
       //  Chercher avec l'id la zone de texte
       const text_a_afficher = document.getElementById(identity);
-      console.log(text_a_afficher);
 
       //  Afficher l'exercice
       text_a_afficher.innerHTML = rand_exercice;
@@ -139,8 +129,7 @@ Template.sidebar.events({
       // On veut savoir quand l'exercice à été généré pour ensuite trier Level_1 chronologiquement
       d = new Date();
       row.date_création = d.getTime();
-      console.log(identification);
-      console.log(row);
+      
 
       // On veut également savoir qui a créé cet exercice
       row.owner = Meteor.user()._id;

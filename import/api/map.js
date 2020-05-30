@@ -56,7 +56,6 @@ Template.canvas.events({
   'click .bouton'(event) {
     // Défini le target
     const { target } = event;
-    console.log(target);
 
 
     //  On regarde quel bouton a été cliqué
@@ -71,8 +70,6 @@ Template.canvas.events({
 
     //  On cherche le dernier exercice généré pour le bouton cliqué (active_button est une variable globale)
     const exercice_on_button = Level_1.find({ on_button: Meteor.user().profile.active_button, owner: Meteor.user()._id }, { limit: 1, sort: { date_création: -1 } }).fetch();
-    console.log(exercice_on_button);
-    console.log(exercice_on_button[0].exercice);
 
 
     // On cherche les fields qu'on a besoin
@@ -87,7 +84,6 @@ Template.canvas.events({
 
     // On veut maintenant ajouter un field à ce document : created_at, qui nous sera utile pour calculer le temps mis pour compléter un exercice.
     let choix_id = exercice_on_button[0]._id;
-    console.log(choix_id);
 
     d2 = new Date();
     d2_ms = d2.getTime();
@@ -160,71 +156,49 @@ Template.canvas.events({
 
     // Modifier le score du user actif
     const score_actuel = Meteor.user().profile.score + points_gained;
-    console.log(score_actuel);
     Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.score': score_actuel } });
 
 
     // On veut maintenant ajouter un field à ce document : finished_at, qui, mis avec clicked_at, nous sera utile pour calculer le temps mis pour compléter un exercice.
 
-    console.log(exercice_on_button);
     const choix_id = exercice_on_button[0]._id;
-    console.log(choix_id);
-
-    console.log(exercice_on_button[0].clicked_at);
 
     d3 = new Date();
     d3_ms = d3.getTime();
 
     // On ajoute aussi 'completed_in'
     const completed_in = (d3_ms - exercice_on_button[0].clicked_at) / 1000;
-    console.log(completed_in);
 
     // On intègre ces modifications à la base de donnée en utilisant l'id de l'exercice généré pour ce bouton
     Level_1.update({ _id: choix_id }, { $set: { finished_at: d3_ms, completed_in } });
 
 
-    // On va maintenant chercher le dernier exercice complété par l'utilisateur et ajouter à la variable globale 'score_temps' le temps mis pour compléter cet exercice
+    // On va maintenant chercher le dernier exercice complété par l'utilisateur et ajouter à la variable globale 'score_temps' le temps mis pour compléter cet exercice.
+    //Trier BDD pour trouver le dernier exercice qui contient le fields : "completed_in"
 
-    // 1. Chercher le html, où on mettra le total du temps, par id.
-    // let total_temps = document.getElementById('total_temps');
-
-    // 2. Trier BDD pour trouver le dernier exercice qui contient le fields : "completed_in"
-    // demander comment trier parmi les 5 derniers documents dans les fichiers.
     const exercices_faits = Level_1.find({ completed_in: { $exists: true }, owner: Meteor.user()._id, on_button: Meteor.user().profile.active_button }, { limit: 1, sort: { date_création: -1 } }).fetch();
-    console.log(Meteor.user().profile.active_button);
-    console.log(exercices_faits);
-    console.log(Meteor.user().profile.active_button);
 
     // Chercher la valeur de completed_in et l'additioner à la valeur du champs temps de l'utilisateur actif
-    console.log(exercices_faits[0].completed_in);
-    console.log(exercices_faits[0]);
-    console.log(completed_in);
-
-    console.log(Meteor.user().profile.temps);
     const temps_actuel = Meteor.user().profile.temps + exercices_faits[0].completed_in;
-    console.log(temps_actuel);
     Meteor.users.update({ _id: Meteor.userId() }, { $set: { 'profile.temps': temps_actuel } });
 
-    // L'afficher dans l'html
-
-    // total_temps.innerHTML = temps_actuel + " s";
-
+   
     // Lorsqu'un exercice est fini on veut changer l'apparence du bouton pour cet exercice
     document.getElementById(Meteor.user().profile.active_button).setAttribute('fill', '#00ff22');
     document.getElementById(Meteor.user().profile.active_button).setAttribute('stroke', '#f6ff00');
+
+    // On va chercher les 5 derniers exercices créés par l'utilisateur  et on va stocker tous ceux qui contiennent le champs 'completed_in' dans l'array exercices.
     const dernier_exercices = Level_1.find({ owner: Meteor.user()._id }, { limit: 5, sort: { date_création: -1 } }).fetch();
-    console.log(dernier_exercices);
     let exercices = []
     dernier_exercices.forEach(element => {
-    // devrait retourner "false" si l'élément n'existe pas dans l'objet
+    // Devrait retourner "false" si l'élément n'existe pas dans l'objet
     if(element.completed_in) {
       exercices.push(element)
     }
   })
-  console.log(exercices);
 
 
-    // Lorsque l'utilisateur finit tous les exercices sur la map on veut qu'il soit dirigé à l'accueil.
+    // Lorsque l'utilisateur finit tous les exercices sur la map (5 exercices) on veut qu'il soit dirigé à l'accueil.
     // On veut également garder trace de quand la map a été achevée
 
     if (exercices.length == 5){

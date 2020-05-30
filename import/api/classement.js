@@ -52,17 +52,17 @@ Template.classement.helpers({
     return Meteor.user().profile.score;
   },
 
+  // Ici, on va chercher les utilisateurs en fonction de leur score et les mettres dans un array. 
   users () {
     const tableau_classement = Meteor.users.find({}, { sort: { 'profile.score': -1 } }).fetch();
-    console.log(tableau_classement);
-    console.log(tableau_classement[0].profile);
-    console.log(tableau_classement[0].username);
     tableau_classement_length = tableau_classement.length - 1;
     let classement = [];
+
+    // Cet array est ensuite parcouru avec l'index et les informations voulues dans chaque objet sont récoltées et stockées dans un l'array 'classement'.
+    // Un rang est également ajouté.
     for (i = 0; i <= tableau_classement_length; i++) {
       classement.push({ rang: i + 1, utilisateur: tableau_classement[i].username, score: tableau_classement[i].profile.score });
     }
-    console.log(classement);
     return classement;
   },
 
@@ -72,8 +72,7 @@ Template.classement.helpers({
     let this_user_description = Meteor.users.find({username: this_user}).fetch();
     let this_user_maps = this_user_description[0].profile.finished_maps;
     let this_user_maps_length = this_user_maps.length;
-    console.log(this_user_maps_length);
-    console.log(this_user_maps);
+ 
 
     // On veut seulement afficher au maximum les 5 dernières maps complétées
     if (this_user_maps_length<=5){

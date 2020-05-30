@@ -13,6 +13,8 @@ import '../../lib/routing.js';
 
 Template.Home.events({
 
+  // Ces boutons ne sont visibles qu'à l'utilisateur non-logué
+
   'click #btn3'() {
     FlowRouter.go('login');
   },
